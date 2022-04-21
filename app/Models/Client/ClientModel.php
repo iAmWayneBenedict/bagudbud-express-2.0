@@ -56,10 +56,9 @@ class ClientModel extends Model
         */
 
         // return values
-        $not_verified = 1;
-        $email_not_found = 2;
-        $wrong_password = 3;
-        $success = 4;
+        $not_verified = "E1";
+        $email_not_found = "E2";
+        $wrong_password = "E3";
 
         $login = DB::table('clients')
             ->where('email', $email)

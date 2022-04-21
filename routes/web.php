@@ -38,6 +38,7 @@ Route::controller(RiderController::class)->group(function() {
     Route::get("/rider-signup", "riderSignup");
     Route::post("/rider_store", "store")->name("store");
     Route::get("/rider-login", "riderLogin");
+    Route::post("/rider-login_Auth", "rider_login_Auth")->name("rider-login_Auth");
 });
 
 Route::controller(ForgotPassController::class)->group(function () {

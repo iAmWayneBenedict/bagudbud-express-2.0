@@ -33,20 +33,32 @@
                     <div class="col form-container d-flex flex-column align-items-center">
                         <img src="{{ asset('img/Artboard 12@72x-8.png') }}"
                             class="logo-form img-fluid w-90 mb-4 mb-xxl-5 px-5" alt="logo">
-                        <form action="" method="POST" class="container d-flex flex-column">
+                        <form action="{{route('rider-login_Auth')}}" method="POST" class="container d-flex flex-column">
+                            @csrf
                             <div class="d-inline-flex mb-2 mb-xxl-3">
                                 <h3 class="signin-title title position-relative fw-bolder display-4">Sign in</h3>
                             </div>
 
                             <!-- Error message -->
-                            @if (false)
+                            @if (Session::has('fail'))
                                 <div class="alert alert-danger d-flex justify-content-center align-items-center p-2 py-3"
                                     role="alert">
                                     <p class="display-7 m-0 fw-normal">
                                         {{-- Message Here --}}
+                                        {{Session::get('fail')}}
                                     </p>
                                 </div>
                             @endif
+                            @if (Session::has('success'))
+                            <div class="alert alert-danger d-flex justify-content-center align-items-center p-2 py-3"
+                                role="alert">
+                                <p class="display-7 m-0 fw-normal">
+                                    {{-- Message Here --}}
+                                    {{Session::get('success')}}
+                                </p>
+                            </div>
+                            @endif
+
                             <!-- End of error message -->
 
 
@@ -56,6 +68,9 @@
                                     Username</label>
                                 <input type="email" name="email" class="form-control form-control-sm py-2 py-xxl-3 fw-light"
                                     id="emailOrUsername" placeholder="Email or Username">
+                                    <span class="text-danger text-center display-8 fw-bold mt-2 alerts">@error('email')
+                                        {{$message}}
+                                    @enderror</span>
                             </div>
                             <div class="mb-1 mb-xxl-2">
                                 <label for="password"
@@ -70,6 +85,9 @@
                                             style="width: 1.25rem;" alt="">
                                     </span>
                                 </div>
+                                <span class="text-danger text-center display-8 fw-bold mt-2 alerts">@error('password')
+                                    {{$message}}
+                                @enderror</span>
                             </div>
                             <div class="join-now-container d-flex justify-content-between flex-row-reverse px-xl-1">
                                 <div class="form-check">

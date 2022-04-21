@@ -35,7 +35,7 @@
                                     {{Session::get('success')}}
                                 </p>
                             </div>
-                        @endif
+                            @endif
 
                             <!-- End of error message -->
 

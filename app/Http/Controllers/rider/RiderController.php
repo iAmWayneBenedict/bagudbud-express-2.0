@@ -15,8 +15,32 @@ class RiderController extends Controller
         return view('rider.rider-login');
     }
 
+    public function rider_login_Auth(Request $request){
+        
+        //validate all client/user inputs
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required'
+        ]);
 
+        $client_model = new RiderModel();
+        $login_response = $client_model->login_process($request->email, $request->password);
 
+        switch ($login_response) {
+            case "E1":
+                return back()->with('fail', 'Your Account is not yet Activated');
+                break;
+            case "E2":
+                return back()->with('fail', 'Email address not found');
+                break;
+            case "E3":
+                return back()->with('fail', 'Password not match');
+                break;
+            default:
+                // $request->session()->put('user_id', $login_response);
+                return back()->with('success', $login_response);
+        }   
+    }
     
 
     /**
