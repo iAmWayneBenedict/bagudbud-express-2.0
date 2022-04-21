@@ -33,7 +33,7 @@
 
             <div class="col col-md-8 px-xl-5 mx-auto py-5 my-4">
                 <form action="" class="container" id="form">
-
+                  @csrf
                     <div class="row row-cols-1 row-cols-lg-2 mb-5">
                         <div class="col d-flex justify-content-center align-items-center px-1 px-lg-2 px-xxl-5">
                             <img src="{{ asset('img/Logo.svg') }}" class="w-75 img-fluid" alt="logo">
@@ -63,9 +63,11 @@
                                 <label for="first-name"
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">First
                                     name</label>
-                                <input type="text" name="first-name"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="first-name"
+                                <input type="text" name="f_name"
+                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="f_name"
                                     placeholder="First name">
+                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
+                                    message!</span>
                             </div>
                         </div>
 
@@ -76,39 +78,11 @@
                                 <label for="last-name"
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Last
                                     name</label>
-                                <input type="text" name="last-name"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="last-name"
+                                <input type="text" name="l_name"
+                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="l_name"
                                     placeholder="Last name">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Gender and Birthdate row -->
-
-                    <!-- Gender -->
-
-                    <div class="row row-cols-1 row-cols-lg-2">
-                        <div class="col ps-1 ps-lg-2 ps-xxl-5">
-                            <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                <label for="gender"
-                                    class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Gender</label>
-                                <select name="gender" class="form-select form-select-md py-xl-2 py-xxl-3 fw-lighter"
-                                    id="gender" aria-label="Default select example">
-                                    <option selected>Gender</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Birthday -->
-
-                        <div class="col ps-1 pe-lg-2 pe-xxl-5">
-                            <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                <label for="gender"
-                                    class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Birthdate</label>
-                                <input type="date" name="birthdate" id="dirthdate"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter">
+                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
+                                    message!</span>
                             </div>
                         </div>
                     </div>
@@ -125,8 +99,8 @@
                                 <label for="phone-number"
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Phone
                                     number</label>
-                                <input type="number" name="phone-number"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="phone-number"
+                                <input type="number" name="contact_num"
+                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="contact_num"
                                     placeholder="Phone number">
                                 <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
                                     message!</span>
@@ -164,21 +138,6 @@
                                     message!</span>
                             </div>
                         </div>
-
-                        <!-- Confirm Password -->
-
-                        <div class="col ps-1 pe-lg-2 pe-xxl-5">
-                            <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                <label for="confirm-password"
-                                    class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Confirm
-                                    Password</label>
-                                <input type="password" name="confirm-password"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="confirm-password"
-                                    placeholder="Confirm Password">
-                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
-                                    message!</span>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Municipality and Barangay row -->
@@ -192,6 +151,8 @@
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Municipality</label>
                                 <input class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" name="municipality"
                                     list="municipality-list" id="municipality" placeholder="Municipality">
+                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
+                                    message!</span>
                                 <datalist id="municipality-list">
                                     <option value="Baao">
                                     <option value="Bato">
@@ -230,9 +191,11 @@
                                 <label for="zone-street"
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Zone
                                     / Street</label>
-                                <input type="text" name="zone-street"
-                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="zone-street"
+                                <input type="text" name="zone"
+                                    class="form-control form-control-sm py-2 py-xxl-3 fw-lighter" id="zone"
                                     placeholder="Zone or Street">
+                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
+                                    message!</span>
                             </div>
                         </div>
                     </div>
@@ -245,12 +208,14 @@
                                 <label for="vehicle-type"
                                     class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Vehicle
                                     Type</label>
-                                <select name="vehicle-type" class="form-select form-select-md py-xl-2 py-xxl-3 fw-lighter"
-                                    id="vehicle-type" aria-label="Default select example">
+                                <select name="vehicle_type" class="form-select form-select-md py-xl-2 py-xxl-3 fw-lighter"
+                                    id="vehicle_type" aria-label="Default select example">
                                     <option disable selected>Vehicle Type</option>
                                     <option value="Motorcycle">Motorcycle</option>
                                     <option value="Bicycle">Bicycle</option>
                                 </select>
+                                <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
+                                    message!</span>
                             </div>
                         </div>
                     </div>
@@ -380,5 +345,35 @@
             });
 
         })
+
+        $('#form').submit(function(e) {
+            e.preventDefault();
+
+            const fdata = new FormData(this);
+
+            //remove error messages
+            $('.text-danger').addClass('d-none');
+            $.ajax({
+                url: '{{ route('store') }}',
+                method: 'post',
+                data: fdata,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function(res) {
+                    if (res.code == 200) {
+                        alert('ok');
+                        //it should be clear the form inputs and alert a message
+                        //that rider should see thier email for additional requierements
+                    }
+                    if (res.code == 404) {
+                        $.each(res.errors, function(key, val) {
+                            $(`#${key}`).next().text(val).removeClass('d-none');
+                        });
+                    }
+                }
+            });
+        });
     </script>
 @endsection

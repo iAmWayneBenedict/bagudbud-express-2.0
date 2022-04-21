@@ -306,6 +306,8 @@
 
                 // alert('Good');
                 const fdata = new FormData(this);
+                //remove error messages
+                $('.text-danger').addClass('d-none');
                 $.ajax({
                     url: '{{ route('store') }}',
                     method: 'post',
@@ -320,7 +322,6 @@
                             //it should be clear the form inputs and alert a message
                         }
                         if (res.code == 404) {
-                            $('.text-danger').addClass('d-none');
                             $.each(res.errors, function(key, val) {
                                 $(`#${key}`).next().text(val).removeClass('d-none');
                             });

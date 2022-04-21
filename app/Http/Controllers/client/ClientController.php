@@ -121,13 +121,13 @@ class ClientController extends Controller
         $login_response = $client_model->login_process($request->email, $request->password);
 
         switch ($login_response) {
-            case 1:
+            case "E1":
                 return back()->with('fail', 'Your Account is not verified, Check your email');
                 break;
-            case 2:
+            case "E2":
                 return back()->with('fail', 'Email address not found');
                 break;
-            case 3:
+            case "E3":
                 return back()->with('fail', 'Password not match');
                 break;
             default:
