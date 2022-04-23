@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\client\ClientController;
+use App\Http\Controllers\client\ClientDashboardController;
 use App\Http\Controllers\rider\RiderController;
 
 /*
@@ -33,6 +34,10 @@ Route::controller(ClientController::class)->group(function() {
     Route::post("/store", "store")->name("store");
     Route::get("/client-login", "clientLogin");
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
+});
+
+Route::controller(ClientDashboardController::class)->group(function() {
+    Route::get('/client-dashboard', 'index');
 });
 
 Route::controller(RiderController::class)->group(function() {

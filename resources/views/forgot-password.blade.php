@@ -11,6 +11,9 @@
     @if ($route == 'client-login' or $route == 'rider-login')
         <div class="d-flex justify-content-center align-items-center" style="height: 80vh">
             <div style="max-width: 30rem; width: 100%" class="p-5">
+                <div class="return-btn mb-5">
+                    <a href="" class="text-dark text-decoration-none fw-semibold">return</a>
+                </div>
                 <h1 class="mb-3 text-center fs-1">Reset Password</h1>
                 <p class="mb-4 text-secondary">Fear not! We'll email you instructions to reset your password.</p>
                 <div class="mb-2 mb-xxl-3">
