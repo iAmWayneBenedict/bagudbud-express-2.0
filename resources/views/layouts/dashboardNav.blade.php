@@ -270,9 +270,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('js/dashboard.js') }}"></script> --}}
     <script src="{{ asset('js/main.js') }}"></script>
-    {{-- <script src="{{ asset('js/bootstrap.min.js') }}"></script> --}}
 
     <script type="text/javascript">
         $(() => {
