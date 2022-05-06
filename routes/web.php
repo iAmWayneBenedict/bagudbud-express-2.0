@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\client\ClientController;
+use App\Http\Controllers\client\ClientDashboardController;
 use App\Http\Controllers\rider\RiderController;
+use App\Http\Controllers\TrackingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,10 @@ Route::controller(ClientController::class)->group(function() {
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 
+Route::controller(ClientDashboardController::class)->group(function() {
+    Route::get('/client-dashboard', 'index');
+});
+
 Route::controller(RiderController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/rider-signup", "riderSignup");
@@ -49,4 +55,8 @@ Route::controller(ForgotPassController::class)->group(function () {
     Route::post('/rider_SC', 'rider_send_code')->name('rider_SC');
     Route::post('/client_RC', 'client_reset_code')->name('client_RC');
     Route::post('/rider_RC', 'rider_reset_code')->name('rider_RC');
+});
+
+Route::controller(TrackingController::class)->group(function() {
+    Route::get('/tracking', 'index')->name('tracking');
 });
