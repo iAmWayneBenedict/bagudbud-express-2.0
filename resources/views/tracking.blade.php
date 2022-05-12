@@ -34,7 +34,7 @@
                     <div class="d-flex d-none flex-column justify-content-center invalid">
                         <img src="{{ asset('img/iconBagudbud.png') }}" style="max-width:40rem" class="my-5 img-fluid"
                             alt="">
-                        <h2 class="title-404 text-center mt-5">Item Not Found</h2>
+                        <h2 class="title-404 text-center mt-5">Item Not Found!</h2>
                         <h5 class="text-secondary fw-normal text-center mb-5">Please enter a valid Tracking Number</h5>
                     </div>
                     <div class="result w-100 d-none d-flex">

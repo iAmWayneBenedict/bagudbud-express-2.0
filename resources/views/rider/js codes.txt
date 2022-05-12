@@ -1,0 +1,109 @@
+
+//////// FOR RIDER-ACCEPTED.BLADE.PHP INSIDE DOCUMENT.READY FUNCTION
+
+            // $('#cancel-form').submit(function(e) {
+            //     e.preventDefault();
+            //     // var reason = $('#floatingTextarea2').val();
+            //     // var req_id = <?php echo $row['req_id']; ?>;
+            //     // var c_id = <?php echo $row['Client_id']; ?>;
+            //     // var trackingNum = '<?php echo $row['tracking_id']; ?>';
+
+            //     $.ajax({
+            //         type: "post",
+            //         url: "<?= base_url('RiderDashboard/cancelDelivery') ?>",
+            //         data: {
+            //             reason: reason,
+            //             req_id: req_id,
+            //             c_id: c_id,
+            //             trackingNum: trackingNum
+            //         },
+            //         dataType: "json",
+            //         success: function(res) {
+            //             if (res.code == 202) {
+            //                 const Toast = Swal.mixin({
+            //                     toast: true,
+            //                     position: 'top-end',
+            //                     showConfirmButton: false,
+            //                     timer: 2000,
+            //                     timerProgressBar: false,
+            //                     didOpen: (toast) => {
+            //                         toast.addEventListener('mouseenter', Swal
+            //                             .stopTimer)
+            //                         toast.addEventListener('mouseleave', Swal
+            //                             .resumeTimer)
+            //                     }
+            //                 })
+
+            //                 Toast.fire({
+            //                     icon: 'success',
+            //                     title: 'Canceled'
+            //                 }).then(function() {
+            //                     location.href =
+            //                         "<?= base_url('rider-dashboard/deliveries') ?>";
+            //                 });
+            //             }
+            //         }
+            //     });
+            //     // console.log(c_id);
+            // });
+
+
+            // $('#message-form').submit(function(e) {
+            //     e.preventDefault();
+
+            //     var formdata = new FormData(this);
+            //     formdata.append('cid', <?php echo $row['Client_id']; ?>);
+            //     formdata.append('req_id', <?php echo $row['req_id']; ?>);
+            //     formdata.append('trackingNum', '<?php echo $row['tracking_id']; ?>');
+
+            //     for (var pair of formdata.entries()) {
+            //         console.log(pair[0] + ', ' + pair[1]);
+            //     }
+
+            //     $.ajax({
+            //         type: "post",
+            //         url: "<?= base_url('RiderDashboard/successDelivery') ?>",
+            //         data: formdata,
+            //         dataType: "json",
+            //         contentType: false,
+            //         processData: false,
+            //         success: function(res) {
+            //             if (res.code == 404) {
+            //                 Swal.fire(
+            //                     'Opps!',
+            //                     'Invalid File Type',
+            //                     'warning'
+            //                 )
+            //             } else if (res.code == 202) {
+            //                 const Toast = Swal.mixin({
+            //                     toast: true,
+            //                     position: 'top-end',
+            //                     showConfirmButton: false,
+            //                     timer: 2000,
+            //                     timerProgressBar: true,
+            //                     didOpen: (toast) => {
+            //                         toast.addEventListener('mouseenter', Swal
+            //                             .stopTimer)
+            //                         toast.addEventListener('mouseleave', Swal
+            //                             .resumeTimer)
+            //                     }
+            //                 })
+
+            //                 Toast.fire({
+            //                     icon: 'success',
+            //                     title: 'Delivered successfully'
+            //                 }).then(function() {
+            //                     location.href =
+            //                         "<?= base_url('rider-dashboard/deliveries') ?>";
+            //                 })
+            //             } else if (res.code == 405 || res.code == 406) {
+            //                 Swal.fire(
+            //                     'Opps!',
+            //                     'something went wrong, try again in few seconds',
+            //                     'warning'
+            //                 )
+            //             }
+            //         }
+            //     });
+
+            // });
