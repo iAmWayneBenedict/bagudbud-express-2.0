@@ -30,15 +30,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
-
+    {{-- bootstrap icon cdn --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {{-- <!-- JQuery Ajax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"
         integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
 </head>
 
 <body class="position-relative">
-    <div id="app" class="d-nones d-sm-block">
+    <div id="app" class="d-none d-sm-block">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active position-fixed">
                 <div class="sidebar-header">
@@ -63,7 +66,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item edit-profile">
-                                    <a href="">My Profile</a>
+                                    <a href="/client-profile">My Profile</a>
                                 </li>
                                 <li class="submenu-item password-and-security">
                                     <a href="">Password and
@@ -78,7 +81,7 @@
                             </ul>
                         </li>
                         <li class="dashboard sidebar-item">
-                            <a href="" class='sidebar-link'>
+                            <a href="/client-dashboard" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -267,12 +270,13 @@
 
         </div>
     </div>
-
+    {{-- <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script> --}}
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    {{-- <script src="{{ asset('js/dashboard.js') }}"></script> --}}
     <script src="{{ asset('js/main.js') }}"></script>
-
+    <script src="{{ asset('js/dashboard.js') }}"></script>
     <script type="text/javascript">
         $(() => {
             let getUrl = window.location;

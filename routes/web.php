@@ -6,7 +6,10 @@ use App\Http\Controllers\ForgotPassController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\client\ClientController;
 use App\Http\Controllers\client\ClientDashboardController;
+use App\Http\Controllers\client\ClientProfileController;
 use App\Http\Controllers\rider\RiderController;
+use App\Http\Controllers\rider\RiderDashboardController;
+use App\Http\Controllers\rider\RiderProfileController;
 use App\Http\Controllers\TrackingController;
 
 /*
@@ -25,10 +28,12 @@ Route::get('/', function () {
 });
 
 
+// Home Controller Controller --- Control Routes
 Route::controller(HomeController::class)->group(function() {
     Route::get('/home', 'index')->name('home');
 });
 
+// Client Controller --- Control Routes
 Route::controller(ClientController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/client-signup", "clientSignup");
@@ -37,10 +42,17 @@ Route::controller(ClientController::class)->group(function() {
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 
+// Client Profile Controller
+Route::controller(ClientProfileController::class)->group(function() {
+    Route::get('/client-profile', 'index');
+});
+
+// FClient Dashboard Controller --- Control Routes
 Route::controller(ClientDashboardController::class)->group(function() {
     Route::get('/client-dashboard', 'index');
 });
 
+// Rider Controller --- Control Routes
 Route::controller(RiderController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/rider-signup", "riderSignup");
@@ -49,6 +61,19 @@ Route::controller(RiderController::class)->group(function() {
     Route::post("/rider-login_Auth", "rider_login_Auth")->name("rider-login_Auth");
 });
 
+// Rider Profile Controller
+Route::controller(RiderProfileController::class)->group(function() {
+    Route::get('/rider-profile', 'index');
+    Route::get('/rider-delete-account', 'deleteAccount');
+});
+
+// Rider Dashboard Controller
+Route::controller(RiderDashboardController::class)->group(function() {
+    Route::get('/rider-dashboard', 'index');
+    Route::get('/rider-accepted', 'accepted');
+});
+
+// Forgot Password Controller --- Control Routes
 Route::controller(ForgotPassController::class)->group(function () {
     Route::get('/forgot-password', 'index')->name('forgot-password');
     Route::post('/client_SC', 'client_send_code')->name('client_SC');
@@ -57,6 +82,7 @@ Route::controller(ForgotPassController::class)->group(function () {
     Route::post('/rider_RC', 'rider_reset_code')->name('rider_RC');
 });
 
+// Tracking Controller --- Control Routes
 Route::controller(TrackingController::class)->group(function() {
     Route::get('/tracking', 'index')->name('tracking');
 });

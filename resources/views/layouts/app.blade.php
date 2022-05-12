@@ -30,7 +30,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="{{ asset('js/app.js') }}"></script>
-
+    {{-- bootstrap icon cdn --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JQuery Ajax -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"
         integrity="sha512-bztGAvCE/3+a1Oh0gUro7BHukf6v7zpzrAb3ReWAVrt+bVNNphcl2tDTKCBr5zk7iEDmQ2Bv401fX3jeVXGIcA=="
