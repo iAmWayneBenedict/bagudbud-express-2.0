@@ -14,4 +14,8 @@ class RiderDashboardController extends Controller
     public function accepted() {
         return view('rider.rider-accepted');
     }
+
+    public function requestDetails($id) {
+        return view('rider.rider-request');
+    }
 }

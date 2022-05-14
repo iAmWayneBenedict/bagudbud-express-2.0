@@ -65,12 +65,14 @@ Route::controller(RiderController::class)->group(function() {
 Route::controller(RiderProfileController::class)->group(function() {
     Route::get('/rider-profile', 'index');
     Route::get('/rider-delete-account', 'deleteAccount');
+    Route::get('/rider-profile-and-password', 'passwordAndSecurity');
 });
 
 // Rider Dashboard Controller
 Route::controller(RiderDashboardController::class)->group(function() {
     Route::get('/rider-dashboard', 'index');
     Route::get('/rider-accepted', 'accepted');
+    Route::get('/rider-request/{id}', 'requestDetails')->where('id', '[0-9]+');
 });
 
 // Forgot Password Controller --- Control Routes
