@@ -11,6 +11,10 @@ class RiderProfileController extends Controller
         return view('rider.rider-profile');
     }
 
+    public function passwordAndSecurity() {
+        return view('rider.rider-password-and-security');
+    }
+
     public function deleteAccount() {
         return view('rider.delete-account');
     }
