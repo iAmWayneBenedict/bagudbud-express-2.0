@@ -61,36 +61,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row row-cols-1 row-cols-lg-2 w-100">
-
-                                    <!-- Date of Birth -->
-
-                                    <div class="col">
-                                        <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="date-of-birth"
-                                                class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Date
-                                                of Birth</label>
-                                            <input type="date" name="date-of-birth"
-                                                class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="date-of-birth" placeholder="Date of Birth">
-                                        </div>
-                                    </div>
-
-                                    <!-- Gender -->
-
-                                    <div class="col">
-                                        <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="gender"
-                                                class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Gender</label>
-                                            <select
-                                                class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                aria-label=".form-select-sm example" name="gender">
-                                                <option selected value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Email -->
 

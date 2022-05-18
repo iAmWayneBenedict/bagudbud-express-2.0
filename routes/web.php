@@ -49,7 +49,7 @@ Route::controller(ClientProfileController::class)->group(function() {
 
 // FClient Dashboard Controller --- Control Routes
 Route::controller(ClientDashboardController::class)->group(function() {
-    Route::get('/client-dashboard', 'index');
+    Route::get('/client-dashboard', 'index')->middleware('checkLogin');
 });
 
 // Rider Controller --- Control Routes
