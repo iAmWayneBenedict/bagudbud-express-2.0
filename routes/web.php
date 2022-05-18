@@ -49,15 +49,13 @@ Route::controller(ClientProfileController::class)->group(function() {
 
 // FClient Dashboard Controller --- Control Routes
 Route::controller(ClientDashboardController::class)->group(function() {
-<<<<<<< HEAD
     Route::get('/client-dashboard', 'index')->middleware('checkLogin');
-=======
+
     Route::get('/client-dashboard', 'index');
     Route::get('/client-dashboard/notification', 'notifications');
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');
     Route::get('/client-dashboard/cancelled', 'cancelledRequests');
     Route::get('/client-dashboard/cancelled/{id}', 'cancelledRequestsDetail')->where('id', '[0-9]+');
->>>>>>> 23d90de508af2a1d7c35deed075e53b4e4d55a39
 });
 
 // Rider Controller --- Control Routes
