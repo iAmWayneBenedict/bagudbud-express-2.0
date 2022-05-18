@@ -69,7 +69,7 @@
                                     <a href="/rider-profile">My Profile</a>
                                 </li>
                                 <li class="submenu-item password-and-security">
-                                    <a href="">Password and
+                                    <a href="/rider-profile-and-password">Password and
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
@@ -139,7 +139,7 @@
                                 // delivery details path
                                 let id = $(this).attr('data-label').split('-')[1];
                                 location.href =
-                                    `${baseUrl}/rider-dashboard/${currentUrl}/${id}`;
+                                    `${baseUrl}/rider-dashboard/${id}`;
                             });
                         });
                     }
@@ -149,13 +149,13 @@
         $(() => {
 
             let getUrl = window.location;
-            let baseUrl = `${getUrl.origin}/${getUrl.pathname.split('/')[1]}`;
-            let currentUrl = getUrl.pathname.split('/')[3];
+            let baseUrl = `${getUrl.origin}/${getUrl.pathname.split('/')[0]}`;
+            let currentUrl = getUrl.pathname.split('/')[1];
             $('.items').each(function() {
                 $(this).click(function() {
                     // delivery details path
                     let id = $(this).attr('data-label').split('-')[1];
-                    location.href = `${baseUrl}/rider-dashboard/${currentUrl}/${id}`;
+                    location.href = `${baseUrl}rider-request/${id}`;
                 });
             });
 

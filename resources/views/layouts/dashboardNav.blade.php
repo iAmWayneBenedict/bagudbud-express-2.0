@@ -273,20 +273,17 @@
     {{-- <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script> --}}
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/dashboard.js') }}"></script>
+    
     <script type="text/javascript">
         $(() => {
             let getUrl = window.location;
-            let baseUrl = `${getUrl.origin}/${getUrl.pathname.split('/')[1]}`;
-            let currentUrl = getUrl.pathname.split('/')[3];
+            let baseUrl = `${getUrl.origin}/${getUrl.pathname.split('/')[0]}`;
+            let currentUrl = getUrl.pathname.split('/')[2];
             $('.items').each(function() {
                 $(this).click(function() {
                     // delivery details path
                     let id = $(this).attr('data-label').split('-')[1];
-                    location.href = `${baseUrl}/client-dashboard/${currentUrl}/${id}`;
+                    location.href = `${baseUrl}client-dashboard/${currentUrl}/${id}`;
                 });
             });
 
