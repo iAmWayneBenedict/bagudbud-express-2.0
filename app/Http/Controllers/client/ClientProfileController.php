@@ -57,7 +57,7 @@ class ClientProfileController extends Controller
     public function c_logout(Request $request){
         if(Session::has('user_id')){
             $request->session()->forget('user_id');
-            return redirect('client-login');
+            return redirect('/client-login');
         }
     }
 }
