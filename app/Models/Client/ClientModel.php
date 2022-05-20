@@ -114,6 +114,11 @@ class ClientModel extends Model
         return $data;
     }
 
+    public static function updateCLientProfile($id, $data) {
+        
+        $affected = DB::table('clients')->where('client_id', $id)->update($data);
+        return $affected;
+    }
     public function update_user_data($id){
 
     }

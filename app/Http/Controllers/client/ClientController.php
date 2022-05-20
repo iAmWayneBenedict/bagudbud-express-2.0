@@ -85,7 +85,8 @@ class ClientController extends Controller
             // Mail::to($email)->send(new RegisterSendEmail($data));
             return response()->json([ 
                 'code' => 200,
-                'msg' => $last_id
+                'last_id' => $last_id,
+                'msg' => "You have successfully signed up!"
             ]);
         }     
     

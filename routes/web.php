@@ -37,14 +37,15 @@ Route::controller(HomeController::class)->group(function() {
 Route::controller(ClientController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/client-signup", "clientSignup");
-    Route::post("/store", "store")->name("store");
+    Route::post("store", "store")->name("store");
     Route::get("/client-login", "clientLogin");
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 
 // Client Profile Controller
 Route::controller(ClientProfileController::class)->middleware('AuthCheck')->group(function() {
-    Route::get('/client-profile', 'index');
+    Route::get('/client-dashboard/profile', 'index');
+    Route::post('/client-dashboard/profile', 'updateProfile');
     Route::get('/user_data', 'get_client_user_data')->name('user_data');
     Route::post('/user_delete', 'client_delete_account')->name('user_delete');
     Route::get('/c_logout', 'c_logout');
