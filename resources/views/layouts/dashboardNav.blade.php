@@ -66,10 +66,10 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item edit-profile">
-                                    <a href="/client-profile">My Profile</a>
+                                    <a href="/client-dashboard/profile">My Profile</a>
                                 </li>
                                 <li class="submenu-item password-and-security">
-                                    <a href="">Password and
+                                    <a href="/client-dashboard/password-and-security">Password and
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
@@ -81,7 +81,7 @@
                             </ul>
                         </li>
                         <li class="dashboard sidebar-item">
-                            <a href="/client-dashboard" class='sidebar-link'>
+                            <a href="/client-dashboard/pending" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -93,15 +93,15 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item success">
-                                    <a href="">Success Requests</a>
+                                    <a href="/client-dashboard/success">Success Requests</a>
                                 </li>
                                 <li class="submenu-item cancelled">
-                                    <a href="">Cancelled Requests</a>
+                                    <a href="/client-dashboard/cancelled">Cancelled Requests</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="notifications sidebar-item">
-                            <a href="" class='sidebar-link position-relative'>
+                            <a href="/client-dashboard/notifications" class='sidebar-link position-relative'>
                                 <i class="bi bi-bell-fill"></i>
                                 <span class="position-relative">
                                     Notifications
@@ -113,7 +113,7 @@
                             </a>
                         </li>
                         <li class="tracking sidebar-item">
-                            <a href="" class='sidebar-link'>
+                            <a href="/client-dashboard/tracking" class='sidebar-link'>
                                 <i class="bi bi-map-fill"></i>
                                 <span>Tracking</span>
                             </a>
@@ -129,11 +129,12 @@
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
+            
             <div
                 class="popup-container container-fluid position-absolute top-50 start-50 translate-middle justify-content-center row">
                 <div class="col-11 col-md-9 col-lg-8 col-xl-6 col-xxl-5 p-4 card">
                     <div class="card-body">
-                        <form method="post" class="" id="form">
+                        <form method="post" action="" class="" id="form">
                             <div class="d-inline-flex">
                                 <h5 class="card-title position-relative title text-black"><span
                                         class="add-request-title">Add</span> Request</h5>
@@ -346,11 +347,11 @@
             })
             $('.pending-btn').click(() => {
                 // redirect to pending page
-                location.href = `${baseUrl}/client-dashboard/pending`;
+                location.href = `${baseUrl}client-dashboard/pending`;
             })
             $('.active-deliveries-btn').click(() => {
                 // redirect to deliveries page
-                location.href = `${baseUrl}/client-dashboard/deliveries`;
+                location.href = `${baseUrl}client-dashboard/deliveries`;
             })
 
             let requestID = null;
@@ -457,181 +458,181 @@
 
             $("input").attr("required", true);
             $("select").attr("required", true);
-            $('#form').submit(function(e) {
-                e.preventDefault();
+        //     $('#form').submit(function(e) {
+        //         // e.preventDefault();
 
-                if (bool_number && requestID === null) { // create new request
-                    // $.ajax({
-                    //     type: "post",
-                    //     url: "ClientDashboard/addRecepient",
-                    //     data: new FormData(this),
-                    //     contentType: false,
-                    //     cache: false,
-                    //     processData: false,
-                    //     dataType: "json",
-                    //     success: function(resData) {
-                    //         console.log(resData);
-                    //         if (resData.code == 202) {
-                    //             const Toast = Swal.mixin({
-                    //                 toast: true,
-                    //                 position: 'top-end',
-                    //                 showConfirmButton: false,
-                    //                 timer: 2000,
-                    //                 timerProgressBar: false,
-                    //                 didOpen: (toast) => {
-                    //                     toast.addEventListener('mouseenter', Swal
-                    //                         .stopTimer)
-                    //                     toast.addEventListener('mouseleave', Swal
-                    //                         .resumeTimer)
-                    //                 }
-                    //             })
+        //         if (bool_number && requestID === null) { // create new request
+        //             // $.ajax({
+        //             //     type: "post",
+        //             //     url: "ClientDashboard/addRecepient",
+        //             //     data: new FormData(this),
+        //             //     contentType: false,
+        //             //     cache: false,
+        //             //     processData: false,
+        //             //     dataType: "json",
+        //             //     success: function(resData) {
+        //             //         console.log(resData);
+        //             //         if (resData.code == 202) {
+        //             //             const Toast = Swal.mixin({
+        //             //                 toast: true,
+        //             //                 position: 'top-end',
+        //             //                 showConfirmButton: false,
+        //             //                 timer: 2000,
+        //             //                 timerProgressBar: false,
+        //             //                 didOpen: (toast) => {
+        //             //                     toast.addEventListener('mouseenter', Swal
+        //             //                         .stopTimer)
+        //             //                     toast.addEventListener('mouseleave', Swal
+        //             //                         .resumeTimer)
+        //             //                 }
+        //             //             })
 
-                    //             Toast.fire({
-                    //                 icon: 'success',
-                    //                 title: resData.msg
-                    //             }).then(function() {
-                    //                 $('#form')[0].reset();
-                    //                 $('body').removeClass('popup-blur-active');
-                    //                 $('.popup-container').removeClass('popup-active');
-                    //             });
-                    //         } else if (resData.code == 404) {
+        //             //             Toast.fire({
+        //             //                 icon: 'success',
+        //             //                 title: resData.msg
+        //             //             }).then(function() {
+        //             //                 $('#form')[0].reset();
+        //             //                 $('body').removeClass('popup-blur-active');
+        //             //                 $('.popup-container').removeClass('popup-active');
+        //             //             });
+        //             //         } else if (resData.code == 404) {
 
-                    //             Swal.fire(
-                    //                 'Opps',
-                    //                 resData.msg,
-                    //                 'warning'
-                    //             ).then(function() {
-                    //                 $('#form')[0].reset();
-                    //                 $('body').removeClass('popup-blur-active');
-                    //                 $('.popup-container').removeClass('popup-active');
-                    //             })
-                    //         }
-                    //     },
-                    //     error: (res, r) => {
-                    //         console.log(res, r)
-                    //     }
-                    // });
-                } else if (bool_number && requestID !== null) {
-                    // edit request
-                    var reqid = requestID.requestID;
-                    var data = new FormData(this);
-                    data.append('reqid', reqid);
+        //             //             Swal.fire(
+        //             //                 'Opps',
+        //             //                 resData.msg,
+        //             //                 'warning'
+        //             //             ).then(function() {
+        //             //                 $('#form')[0].reset();
+        //             //                 $('body').removeClass('popup-blur-active');
+        //             //                 $('.popup-container').removeClass('popup-active');
+        //             //             })
+        //             //         }
+        //             //     },
+        //             //     error: (res, r) => {
+        //             //         console.log(res, r)
+        //             //     }
+        //             // });
+        //         } else if (bool_number && requestID !== null) {
+        //             // edit request
+        //             var reqid = requestID.requestID;
+        //             var data = new FormData(this);
+        //             data.append('reqid', reqid);
 
-                    // $.ajax({
-                    //     type: "post",
-                    //     url: "ClientDashboard/editRecepient",
-                    //     data: data,
-                    //     contentType: false,
-                    //     cache: false,
-                    //     processData: false,
-                    //     dataType: "json",
-                    //     success: function(resData) {
-                    //         if (resData.code == 202) {
-                    //             const Toast = Swal.mixin({
-                    //                 toast: true,
-                    //                 position: 'top-end',
-                    //                 showConfirmButton: false,
-                    //                 timer: 2000,
-                    //                 timerProgressBar: false,
-                    //                 didOpen: (toast) => {
-                    //                     toast.addEventListener('mouseenter', Swal
-                    //                         .stopTimer)
-                    //                     toast.addEventListener('mouseleave', Swal
-                    //                         .resumeTimer)
-                    //                 }
-                    //             })
+        //             // $.ajax({
+        //             //     type: "post",
+        //             //     url: "ClientDashboard/editRecepient",
+        //             //     data: data,
+        //             //     contentType: false,
+        //             //     cache: false,
+        //             //     processData: false,
+        //             //     dataType: "json",
+        //             //     success: function(resData) {
+        //             //         if (resData.code == 202) {
+        //             //             const Toast = Swal.mixin({
+        //             //                 toast: true,
+        //             //                 position: 'top-end',
+        //             //                 showConfirmButton: false,
+        //             //                 timer: 2000,
+        //             //                 timerProgressBar: false,
+        //             //                 didOpen: (toast) => {
+        //             //                     toast.addEventListener('mouseenter', Swal
+        //             //                         .stopTimer)
+        //             //                     toast.addEventListener('mouseleave', Swal
+        //             //                         .resumeTimer)
+        //             //                 }
+        //             //             })
 
-                    //             Toast.fire({
-                    //                 icon: 'success',
-                    //                 title: resData.msg
-                    //             }).then(function() {
-                    //                 $('#form')[0].reset();
-                    //                 $('body').removeClass('popup-blur-active');
-                    //                 $('.popup-container').removeClass('popup-active');
-                    //                 window.location.reload();
-                    //             });
+        //             //             Toast.fire({
+        //             //                 icon: 'success',
+        //             //                 title: resData.msg
+        //             //             }).then(function() {
+        //             //                 $('#form')[0].reset();
+        //             //                 $('body').removeClass('popup-blur-active');
+        //             //                 $('.popup-container').removeClass('popup-active');
+        //             //                 window.location.reload();
+        //             //             });
 
 
-                    //         } else if (resData.code == 404) {
+        //             //         } else if (resData.code == 404) {
 
-                    //             Swal.fire(
-                    //                 'Opps',
-                    //                 resData.msg,
-                    //                 'warning'
-                    //             ).then(function() {
-                    //                 $('#form')[0].reset();
-                    //                 $('body').removeClass('popup-blur-active');
-                    //                 $('.popup-container').removeClass('popup-active');
-                    //             })
-                    //         }
-                    //     }
-                    // });
-                } else {
-                    // Swal.fire(
-                    //     'Something Wrong',
-                    //     'Check your inputs!',
-                    //     'warning'
-                    // )
-                }
-            });
+        //             //             Swal.fire(
+        //             //                 'Opps',
+        //             //                 resData.msg,
+        //             //                 'warning'
+        //             //             ).then(function() {
+        //             //                 $('#form')[0].reset();
+        //             //                 $('body').removeClass('popup-blur-active');
+        //             //                 $('.popup-container').removeClass('popup-active');
+        //             //             })
+        //             //         }
+        //             //     }
+        //             // });
+        //         } else {
+        //             // Swal.fire(
+        //             //     'Something Wrong',
+        //             //     'Check your inputs!',
+        //             //     'warning'
+        //             // )
+        //         }
+        //     });
 
-            $('#delete-acc').click(function(event) {
-                event.preventDefault()
+        //     $('#delete-acc').click(function(event) {
+        //         event.preventDefault()
 
-                // Swal.fire({
-                //     title: 'Are you sure?',
-                //     text: "You won't be able to revert this!",
-                //     icon: 'warning',
-                //     showCancelButton: true,
-                //     confirmButtonColor: '#3CD87A',
-                //     cancelButtonColor: '#d33',
-                //     confirmButtonText: 'Continue!'
-                // }).then((result) => {
-                //     if (result.isConfirmed) {
+        //         // Swal.fire({
+        //         //     title: 'Are you sure?',
+        //         //     text: "You won't be able to revert this!",
+        //         //     icon: 'warning',
+        //         //     showCancelButton: true,
+        //         //     confirmButtonColor: '#3CD87A',
+        //         //     cancelButtonColor: '#d33',
+        //         //     confirmButtonText: 'Continue!'
+        //         // }).then((result) => {
+        //         //     if (result.isConfirmed) {
 
-                //         $.ajax({
-                //             type: "post",
-                //             url: "ClientProfile/deleteAccount",
-                //             data: '',
-                //             dataType: "json",
-                //             success: function(res) {
-                //                 if (res.code == 202) {
-                //                     Swal.fire(
-                //                         'Deleted!',
-                //                         'Your account has been deleted.',
-                //                         'success'
-                //                     ).then(function() {
-                //                         location.href =
-                //                             "/client-login";
-                //                     })
-                //                 }
-                //             }
-                //         });
-                //     }
-                // })
-            })
+        //         //         $.ajax({
+        //         //             type: "post",
+        //         //             url: "ClientProfile/deleteAccount",
+        //         //             data: '',
+        //         //             dataType: "json",
+        //         //             success: function(res) {
+        //         //                 if (res.code == 202) {
+        //         //                     Swal.fire(
+        //         //                         'Deleted!',
+        //         //                         'Your account has been deleted.',
+        //         //                         'success'
+        //         //                     ).then(function() {
+        //         //                         location.href =
+        //         //                             "/client-login";
+        //         //                     })
+        //         //                 }
+        //         //             }
+        //         //         });
+        //         //     }
+        //         // })
+        //     })
 
-            // function notif() {
-            //     $.ajax({
-            //         type: "get",
-            //         url: "ClientDashboard/getNotifCount",
-            //         dataType: "json",
-            //         success: function(res) {
-            //             if (res.status == 200) {
-            //                 if (res.result) {
-            //                     $('.notif-count').text(res.result);
-            //                     $('.notif-count').removeClass('d-none');
-            //                 } else {
-            //                     $('.notif-count').addClass('d-none');
-            //                 }
-            //             }
-            //         }
-            //     });
-            // }
-            // setInterval(() => {
-            //     notif();
-            // }, 1000);
-        });
+        //     // function notif() {
+        //     //     $.ajax({
+        //     //         type: "get",
+        //     //         url: "ClientDashboard/getNotifCount",
+        //     //         dataType: "json",
+        //     //         success: function(res) {
+        //     //             if (res.status == 200) {
+        //     //                 if (res.result) {
+        //     //                     $('.notif-count').text(res.result);
+        //     //                     $('.notif-count').removeClass('d-none');
+        //     //                 } else {
+        //     //                     $('.notif-count').addClass('d-none');
+        //     //                 }
+        //     //             }
+        //     //         }
+        //     //     });
+        //     // }
+        //     // setInterval(() => {
+        //     //     notif();
+        //     // }, 1000);
+        // });
     </script>
 
 </body>

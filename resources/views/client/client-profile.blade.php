@@ -7,6 +7,9 @@
  Inserts the whole section to the base_no_nav.php
  -->
 @section('content')
+@if (isset($req))
+                {{ print_r($req) }}
+            @endif
     <div class="page-heading">
         <h3 class="text-black">Profile</h3>
     </div>
@@ -18,7 +21,11 @@
                         <h4 class="text-black">My Profile</h4>
                     </div>
                     <div class="card-body position-relative" style="max-width: 50rem; width: 100%">
-                        <form action="" method="post" id="profile-form">
+
+                        {{-- sent to the client profile controller --}}
+
+                        <form action="/client-dashboard/profile" method="post" id="profile-form">
+                            @csrf
                             <div class="inner-container px-3 px-lg-5 d-flex flex-column align-items-center">
                                 <div class="profile-con avatar avatar-xxl border border-2 border-primary position-relative">
 
@@ -183,7 +190,7 @@
                                 </div>
                                 <div class="mt-5 w-100">
                                     <!-- Profile avatar -->
-                                    <input type="hidden" name="profile-avatar" id="profile-avatar">
+                                    <input type="hidden" name="profile-avatar" id="profile-avatar" value="1.jpg">
 
                                     <!-- Submit btn -->
                                     <input type="submit" class="btn btn-primary px-5 py-2" value="Save">
@@ -432,42 +439,42 @@
                     });
             });
 
-            //delete account.. direct from server
-            $('#delete-acc').click(function(e) {
-                e.preventDefault();
+            // //delete account.. direct from server
+            // $('#delete-acc').click(function(e) {
+            //     e.preventDefault();
 
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3CD87A',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Continue!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
+            //     Swal.fire({
+            //         title: 'Are you sure?',
+            //         text: "You won't be able to revert this!",
+            //         icon: 'warning',
+            //         showCancelButton: true,
+            //         confirmButtonColor: '#3CD87A',
+            //         cancelButtonColor: '#d33',
+            //         confirmButtonText: 'Continue!'
+            //     }).then((result) => {
+            //         if (result.isConfirmed) {
 
-                        $.ajax({
-                            type: "post",
-                            url: "deleteAccount",
-                            data: '',
-                            dataType: "json",
-                            success: function(res) {
-                                if (res.code == 202) {
-                                    Swal.fire(
-                                        'Deleted!',
-                                        'Your account has been deleted.',
-                                        'success'
-                                    ).then(function() {
-                                        location.href =
-                                            "/client-login";
-                                    })
-                                }
-                            }
-                        });
-                    }
-                })
-            });
+            //             $.ajax({
+            //                 type: "post",
+            //                 url: "deleteAccount",
+            //                 data: '',
+            //                 dataType: "json",
+            //                 success: function(res) {
+            //                     if (res.code == 202) {
+            //                         Swal.fire(
+            //                             'Deleted!',
+            //                             'Your account has been deleted.',
+            //                             'success'
+            //                         ).then(function() {
+            //                             location.href =
+            //                                 "/client-login";
+            //                         })
+            //                     }
+            //                 }
+            //             });
+            //         }
+            //     })
+            // });
         });
     </script>
 @endsection

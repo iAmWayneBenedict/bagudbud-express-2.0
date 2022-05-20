@@ -44,7 +44,8 @@ Route::controller(ClientController::class)->group(function() {
 
 // Client Profile Controller
 Route::controller(ClientProfileController::class)->group(function() {
-    Route::get('/client-profile', 'index');
+    Route::get('/client-dashboard/profile', 'index');
+    Route::post('/client-dashboard/profile', 'add');
 });
 
 // FClient Dashboard Controller --- Control Routes
@@ -56,6 +57,9 @@ Route::controller(ClientDashboardController::class)->group(function() {
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');
     Route::get('/client-dashboard/cancelled', 'cancelledRequests');
     Route::get('/client-dashboard/cancelled/{id}', 'cancelledRequestsDetail')->where('id', '[0-9]+');
+    Route::get('/client-dashboard/password-and-security', 'clientPasswordAndSecurity');
+    Route::get('/client-dashboard/tracking', 'tracking');
+    Route::get('/client-dashboard/success', 'successDeliveries');
 });
 
 // Rider Controller --- Control Routes
