@@ -405,20 +405,20 @@
                     confirmButtonText: 'Continue!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-
+                        console.log(1)
                         $.ajax({
                             type: "post",
                             url: '{{ route('user_delete')}}',
                             data: '',
                             dataType: "json",
                             success: function(res) {
-                                if (res.code == 202) {
+                                if (res.code == 200) {
                                     Swal.fire(
                                         'Deleted!',
                                         'Your account has been deleted.',
                                         'success'
                                     ).then(function() {
-                                        location.href = {{ route('client-login') }};
+                                        location.href = '/client-login';
                                     })
                                 }
                                 console.log(res);
