@@ -50,18 +50,11 @@ Route::controller(ClientProfileController::class)->group(function() {
 
 // FClient Dashboard Controller --- Control Routes
 Route::controller(ClientDashboardController::class)->group(function() {
-<<<<<<< HEAD
-    Route::get('/client-dashboard/pending', 'index');
-    Route::get('/client-dashboard/deliveries', 'clientRequestAccepted');
-    Route::get('/client-dashboard/notifications', 'notifications');
-    Route::get('/client-dashboard/notifications/{id}', 'notificationDetail')->where('id', '[0-9]+');
-=======
     Route::get('/client-dashboard', 'index')->middleware('checkLogin');
 
     Route::get('/client-dashboard', 'index');
     Route::get('/client-dashboard/notification', 'notifications');
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');
->>>>>>> 9cc23609b5af56efbd32234a0228c60a9549053a
     Route::get('/client-dashboard/cancelled', 'cancelledRequests');
     Route::get('/client-dashboard/cancelled/{id}', 'cancelledRequestsDetail')->where('id', '[0-9]+');
     Route::get('/client-dashboard/password-and-security', 'clientPasswordAndSecurity');
