@@ -342,59 +342,11 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            //update profile
-            $('#profile-form').submit(function(e) {
-                // e.preventDefault();
-                    // var data = new FormData(this);
-                    // $.ajax({
-                    //     type: "post",
-                    //     url: "editProfile')",
-                    //     data: data,
-                    //     dataType: "json",
-                    //     contentType: false,
-                    //     cache: false,
-                    //     processData: false,
-                    //     success: function(res) {
-                    //         console.log(res);
-                    //         if (res.code == 505) {
-                    //             Swal.fire({
-                    //                 icon: 'error',
-                    //                 title: 'Oops...',
-                    //                 text: res.msg
-                    //             });
-                    //         } else {
-                    //             const Toast = Swal.mixin({
-                    //                 toast: true,
-                    //                 position: 'top-end',
-                    //                 showConfirmButton: false,
-                    //                 timer: 2000,
-                    //                 timerProgressBar: false,
-                    //                 didOpen: (toast) => {
-                    //                     toast.addEventListener('mouseenter', Swal
-                    //                         .stopTimer)
-                    //                     toast.addEventListener('mouseleave', Swal
-                    //                         .resumeTimer)
-                    //                 }
-                    //             })
-
-                    //             Toast.fire({
-                    //                 icon: 'success',
-                    //                 title: res.msg
-                    //             }).then(function() {
-                    //                 $('#form')[0].reset();
-                    //                 // $('body').removeClass('popup-blur-active');
-                    //                 // $('.popup-container').removeClass('popup-active');
-                    //                 // window.location.reload();
-                    //             });
-                    //         }
-                    //     }
-                    // });
-            });
 
             //delete account.. direct from server
             $('#delete-acc').click(function(e) {
                 e.preventDefault();
-
+                alert('ok');
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -421,7 +373,6 @@
                                         location.href = '/client-login';
                                     })
                                 }
-                                console.log(res);
                             }
                         });
                     }

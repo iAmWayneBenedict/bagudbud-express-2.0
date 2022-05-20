@@ -73,7 +73,7 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-                                    <a href="#" id="delete-acc">Delete Account</a>
+                                    <a href="#" id="delete-acc" >Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="c_logout" class="text-danger">Logout</a>
@@ -390,51 +390,8 @@
                     requestID: getUrl.pathname.split('/')[4]
                 };
 
-                // console.log($('.popup-container').find('input'));
-
-                // let inputs = {};
-                // $('.popup-container').find('input').each(function() {
-                //     // inputs[this.name] = 'sample input'
-                //     $(this).val('l');
-                // });
 
                 const $parent = $('.popup-container');
-
-                // $.ajax({
-                //     url: "ClientDashboard/temp",
-                //     method: "GET",
-                //     dataType: "json",
-                //     data: requestID,
-                //     success: function(res) {
-                //         $parent.find('input[name=name]').val(res['name'])
-                //         $parent.find('input[name=phone-number]').val(res['p-num'])
-                //         $parent.find('input[name=address]').val(res['address'])
-                //         const $municipality = $parent.find('select[name=Municipality');
-                //         $municipality.children().each(function() {
-                //             $(this).removeAttr('selected')
-                //             if (res['municipality'].toLowerCase() === $(this).val()
-                //                 .toLowerCase()) {
-                //                 $(this).attr('selected', 'true')
-                //             }
-                //         });
-
-                //         // $parent.find('input[name=Municipality]').val(res['municipality'])
-                //         $parent.find('input[name=product-name]').val(res['product-name'])
-                //         $parent.find('input[name=product-price]').val(res['product-price'])
-                //         $parent.find('select[name=payment]').val()
-                //         if (res['payment'] == "COD") {
-                //             $parent.find('select[name=payment]').children().first().attr(
-                //                 'selected', 'true');
-                //             $parent.find('select[name=payment]').children().last().removeAttr(
-                //                 'selected');
-                //         } else {
-                //             $parent.find('select[name=payment]').children().last().attr(
-                //                 'selected', 'true');
-                //             $parent.find('select[name=payment]').children().first().removeAttr(
-                //                 'selected');
-                //         }
-                //     }
-                // });
 
             });
 
@@ -459,180 +416,7 @@
             $("input").attr("required", true);
             $("select").attr("required", true);
         });
-        //     $('#form').submit(function(e) {
-        //         // e.preventDefault();
-
-        //         if (bool_number && requestID === null) { // create new request
-        //             // $.ajax({
-        //             //     type: "post",
-        //             //     url: "ClientDashboard/addRecepient",
-        //             //     data: new FormData(this),
-        //             //     contentType: false,
-        //             //     cache: false,
-        //             //     processData: false,
-        //             //     dataType: "json",
-        //             //     success: function(resData) {
-        //             //         console.log(resData);
-        //             //         if (resData.code == 202) {
-        //             //             const Toast = Swal.mixin({
-        //             //                 toast: true,
-        //             //                 position: 'top-end',
-        //             //                 showConfirmButton: false,
-        //             //                 timer: 2000,
-        //             //                 timerProgressBar: false,
-        //             //                 didOpen: (toast) => {
-        //             //                     toast.addEventListener('mouseenter', Swal
-        //             //                         .stopTimer)
-        //             //                     toast.addEventListener('mouseleave', Swal
-        //             //                         .resumeTimer)
-        //             //                 }
-        //             //             })
-
-        //             //             Toast.fire({
-        //             //                 icon: 'success',
-        //             //                 title: resData.msg
-        //             //             }).then(function() {
-        //             //                 $('#form')[0].reset();
-        //             //                 $('body').removeClass('popup-blur-active');
-        //             //                 $('.popup-container').removeClass('popup-active');
-        //             //             });
-        //             //         } else if (resData.code == 404) {
-
-        //             //             Swal.fire(
-        //             //                 'Opps',
-        //             //                 resData.msg,
-        //             //                 'warning'
-        //             //             ).then(function() {
-        //             //                 $('#form')[0].reset();
-        //             //                 $('body').removeClass('popup-blur-active');
-        //             //                 $('.popup-container').removeClass('popup-active');
-        //             //             })
-        //             //         }
-        //             //     },
-        //             //     error: (res, r) => {
-        //             //         console.log(res, r)
-        //             //     }
-        //             // });
-        //         } else if (bool_number && requestID !== null) {
-        //             // edit request
-        //             var reqid = requestID.requestID;
-        //             var data = new FormData(this);
-        //             data.append('reqid', reqid);
-
-        //             // $.ajax({
-        //             //     type: "post",
-        //             //     url: "ClientDashboard/editRecepient",
-        //             //     data: data,
-        //             //     contentType: false,
-        //             //     cache: false,
-        //             //     processData: false,
-        //             //     dataType: "json",
-        //             //     success: function(resData) {
-        //             //         if (resData.code == 202) {
-        //             //             const Toast = Swal.mixin({
-        //             //                 toast: true,
-        //             //                 position: 'top-end',
-        //             //                 showConfirmButton: false,
-        //             //                 timer: 2000,
-        //             //                 timerProgressBar: false,
-        //             //                 didOpen: (toast) => {
-        //             //                     toast.addEventListener('mouseenter', Swal
-        //             //                         .stopTimer)
-        //             //                     toast.addEventListener('mouseleave', Swal
-        //             //                         .resumeTimer)
-        //             //                 }
-        //             //             })
-
-        //             //             Toast.fire({
-        //             //                 icon: 'success',
-        //             //                 title: resData.msg
-        //             //             }).then(function() {
-        //             //                 $('#form')[0].reset();
-        //             //                 $('body').removeClass('popup-blur-active');
-        //             //                 $('.popup-container').removeClass('popup-active');
-        //             //                 window.location.reload();
-        //             //             });
-
-
-        //             //         } else if (resData.code == 404) {
-
-        //             //             Swal.fire(
-        //             //                 'Opps',
-        //             //                 resData.msg,
-        //             //                 'warning'
-        //             //             ).then(function() {
-        //             //                 $('#form')[0].reset();
-        //             //                 $('body').removeClass('popup-blur-active');
-        //             //                 $('.popup-container').removeClass('popup-active');
-        //             //             })
-        //             //         }
-        //             //     }
-        //             // });
-        //         } else {
-        //             // Swal.fire(
-        //             //     'Something Wrong',
-        //             //     'Check your inputs!',
-        //             //     'warning'
-        //             // )
-        //         }
-        //     });
-
-        //     $('#delete-acc').click(function(event) {
-        //         event.preventDefault()
-
-        //         // Swal.fire({
-        //         //     title: 'Are you sure?',
-        //         //     text: "You won't be able to revert this!",
-        //         //     icon: 'warning',
-        //         //     showCancelButton: true,
-        //         //     confirmButtonColor: '#3CD87A',
-        //         //     cancelButtonColor: '#d33',
-        //         //     confirmButtonText: 'Continue!'
-        //         // }).then((result) => {
-        //         //     if (result.isConfirmed) {
-
-        //         //         $.ajax({
-        //         //             type: "post",
-        //         //             url: "ClientProfile/deleteAccount",
-        //         //             data: '',
-        //         //             dataType: "json",
-        //         //             success: function(res) {
-        //         //                 if (res.code == 202) {
-        //         //                     Swal.fire(
-        //         //                         'Deleted!',
-        //         //                         'Your account has been deleted.',
-        //         //                         'success'
-        //         //                     ).then(function() {
-        //         //                         location.href =
-        //         //                             "/client-login";
-        //         //                     })
-        //         //                 }
-        //         //             }
-        //         //         });
-        //         //     }
-        //         // })
-        //     })
-
-        //     // function notif() {
-        //     //     $.ajax({
-        //     //         type: "get",
-        //     //         url: "ClientDashboard/getNotifCount",
-        //     //         dataType: "json",
-        //     //         success: function(res) {
-        //     //             if (res.status == 200) {
-        //     //                 if (res.result) {
-        //     //                     $('.notif-count').text(res.result);
-        //     //                     $('.notif-count').removeClass('d-none');
-        //     //                 } else {
-        //     //                     $('.notif-count').addClass('d-none');
-        //     //                 }
-        //     //             }
-        //     //         }
-        //     //     });
-        //     // }
-        //     // setInterval(() => {
-        //     //     notif();
-        //     // }, 1000);
+        
         
     </script>
 
