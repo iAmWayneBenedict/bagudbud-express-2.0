@@ -7,9 +7,6 @@
  Inserts the whole section to the base_no_nav.php
  -->
 @section('content')
-@if (isset($req))
-                {{ print_r($req) }}
-            @endif
     <div class="page-heading">
         <h3 class="text-black">Profile</h3>
     </div>
@@ -23,12 +20,13 @@
                     <div class="card-body position-relative" style="max-width: 50rem; width: 100%">
                                   
                         <form action="" method="post" id="profile-form">
+                            @csrf
                             <div class="inner-container px-3 px-lg-5 d-flex flex-column align-items-center">
                                 <div class="profile-con avatar avatar-xxl border border-2 border-primary position-relative">
 
                                     <!-- Profile Avatar -->
 
-                                    <img class="profile-avatar-image" src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
+                                    <img class="profile-avatar-image" src="{{ asset("img/faces/".$c_data->profile_pic) }}.jpg" alt="Face 1">
                                     <div
                                         class="overlay position-absolute w-100 h-100 rounded-circle overflow-hidden d-flex justify-content-center align-items-center">
                                         <span class="fw-bold" style="opacity: 0.7;">Change Profile Image</span>
@@ -173,7 +171,7 @@
                                 </div>
                                 <div class="mt-5 w-100">
                                     <!-- Profile avatar -->
-                                    <input type="hidden" name="profile-avatar" id="profile-avatar" value="1.jpg">
+                                    <input type="hidden" name="profile_pic" id="profile-avatar" value="1">
 
                                     <!-- Submit btn -->
                                     <input type="submit" class="btn btn-primary px-5 py-2" value="Save">
@@ -188,56 +186,56 @@
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="1.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="1">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/2.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="2.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="2">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/3.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="3.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="3">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/4.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="4.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="4">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/5.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="5.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="5">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/6.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="6.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="6">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/7.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="7.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="7">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/8.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="8.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="8">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
@@ -296,12 +294,13 @@
 
                 // insert on success
                 $currentProfile.attr('src', "{{ asset('img/faces') }}" +
-                    "/" + $data[0].value)
+                    "/" + $data[0].value + ".jpg")
+                console.log($data[0].value)
                 $('#profile-avatar').val($data[0].value);
-                setTimeout(() => {
+                // setTimeout(() => {
                     $('.avatar-container').addClass('d-none');
                     $('body').removeClass('popup-blur-active');
-                }, 150)
+                // }, 150)
             })
 
             $('#search').keyup(function() {
@@ -340,51 +339,51 @@
 
             //update profile
             $('#profile-form').submit(function(e) {
-                e.preventDefault();
-                    var data = new FormData(this);
-                    $.ajax({
-                        type: "post",
-                        url: "editProfile')",
-                        data: data,
-                        dataType: "json",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(res) {
-                            console.log(res);
-                            if (res.code == 505) {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: res.msg
-                                });
-                            } else {
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 2000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal
-                                            .stopTimer)
-                                        toast.addEventListener('mouseleave', Swal
-                                            .resumeTimer)
-                                    }
-                                })
+                // e.preventDefault();
+                    // var data = new FormData(this);
+                    // $.ajax({
+                    //     type: "post",
+                    //     url: "editProfile')",
+                    //     data: data,
+                    //     dataType: "json",
+                    //     contentType: false,
+                    //     cache: false,
+                    //     processData: false,
+                    //     success: function(res) {
+                    //         console.log(res);
+                    //         if (res.code == 505) {
+                    //             Swal.fire({
+                    //                 icon: 'error',
+                    //                 title: 'Oops...',
+                    //                 text: res.msg
+                    //             });
+                    //         } else {
+                    //             const Toast = Swal.mixin({
+                    //                 toast: true,
+                    //                 position: 'top-end',
+                    //                 showConfirmButton: false,
+                    //                 timer: 2000,
+                    //                 timerProgressBar: false,
+                    //                 didOpen: (toast) => {
+                    //                     toast.addEventListener('mouseenter', Swal
+                    //                         .stopTimer)
+                    //                     toast.addEventListener('mouseleave', Swal
+                    //                         .resumeTimer)
+                    //                 }
+                    //             })
 
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: res.msg
-                                }).then(function() {
-                                    $('#form')[0].reset();
-                                    // $('body').removeClass('popup-blur-active');
-                                    // $('.popup-container').removeClass('popup-active');
-                                    // window.location.reload();
-                                });
-                            }
-                        }
-                    });
+                    //             Toast.fire({
+                    //                 icon: 'success',
+                    //                 title: res.msg
+                    //             }).then(function() {
+                    //                 $('#form')[0].reset();
+                    //                 // $('body').removeClass('popup-blur-active');
+                    //                 // $('.popup-container').removeClass('popup-active');
+                    //                 // window.location.reload();
+                    //             });
+                    //         }
+                    //     }
+                    // });
             });
 
             // //delete account.. direct from server

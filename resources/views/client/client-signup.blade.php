@@ -309,7 +309,7 @@
                 //remove error messages
                 $('.text-danger').addClass('d-none');
                 $.ajax({
-                    url: '{{ route('store') }}',
+                    url: 'store',
                     method: 'post',
                     data: fdata,
                     cache: false,
@@ -328,7 +328,7 @@
                         }
                     },
                     error: function(err) {
-                        console.log(err.responseText)
+                        alert(err.responseText)
                     }
                 });
             });

@@ -458,6 +458,7 @@
 
             $("input").attr("required", true);
             $("select").attr("required", true);
+        });
         //     $('#form').submit(function(e) {
         //         // e.preventDefault();
 
@@ -632,7 +633,7 @@
         //     // setInterval(() => {
         //     //     notif();
         //     // }, 1000);
-        // });
+        
     </script>
 
 </body>

@@ -12,6 +12,9 @@ class ClientProfileController extends Controller
 {
     public function index() {
         $c_data = $this->get_client_user_data();
+        if ($c_data->profile_pic === null) {
+            $c_data->profile_pic = 1;
+        }
         return view('client.client-profile', compact('c_data'));
     }
 
@@ -22,8 +25,16 @@ class ClientProfileController extends Controller
         return $user_data;    
     }
 
-    public function updtae_profile(Request $request){
-
+    public function updateProfile(Request $request){
+        $user_id = session('user_id'); 
+        $data = $request->all();
+        array_shift($data);
+        $affected = ClientModel::updateCLientProfile($user_id, $data);
+        $c_data = $this->get_client_user_data();
+        if ($c_data->profile_pic === null) {
+            $c_data->profile_pic = 1;
+        }
+        return view('client.client-profile', ['req' => $request->all(), 'c_data' => $c_data]);
     }
 
     public function c_logout(Request $request){
@@ -31,11 +42,5 @@ class ClientProfileController extends Controller
             $request->session()->forget('user_id');
             return redirect('client-login');
         }
-    }
-
-    public function add(Request $req) {
-        // get the data for the profile from the database then pass to the view
-        // include data in view
-        return view('client.client-profile', ['req' => $req->all()]);
     }
 }
