@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class AuthCheck
+class AlreadyLogin
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,11 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next)
     {
-        //check if session is set for the user 
-        if(!Session::has('user_id')){
-            return redirect('client-login')->with('fail', "You need to Login first");
+        // if the user is already login ..when user access the signup and login page the
+        // user will back to its current page
+        if(Session::has('user_id') && (url('client-login') == $request->url() || url('client-signup') == $request->url())){
+            // return redirect('client-dashboard');
+            return back(); 
         }
         return $next($request);
     }

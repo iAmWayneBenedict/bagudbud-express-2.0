@@ -36,9 +36,9 @@ Route::controller(HomeController::class)->group(function() {
 // Client Controller --- Control Routes
 Route::controller(ClientController::class)->group(function() {
     // Route::get("/users", "viewLoad");
-    Route::get("/client-signup", "clientSignup");
+    Route::get("/client-signup", "clientSignup")->middleware('AlreadyLogin');
     Route::post("store", "store")->name("store");
-    Route::get("/client-login", "clientLogin");
+    Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin');
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 

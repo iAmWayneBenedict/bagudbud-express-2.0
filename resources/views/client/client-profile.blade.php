@@ -343,6 +343,7 @@
                 }
             });
 
+            //pop up delete modal
             //delete account.. direct from server
             $('#delete-acc').click(function(e) {
                 e.preventDefault();
