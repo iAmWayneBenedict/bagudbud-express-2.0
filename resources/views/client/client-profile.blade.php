@@ -346,7 +346,6 @@
             //delete account.. direct from server
             $('#delete-acc').click(function(e) {
                 e.preventDefault();
-                alert('ok');
                 Swal.fire({
                     title: 'Are you sure?',
                     text: "You won't be able to revert this!",
@@ -359,7 +358,7 @@
                     if (result.isConfirmed) {
                         console.log(1)
                         $.ajax({
-                            type: "post",
+                            type: "get",
                             url: '{{ route('user_delete')}}',
                             data: '',
                             dataType: "json",
@@ -370,7 +369,7 @@
                                         'Your account has been deleted.',
                                         'success'
                                     ).then(function() {
-                                        location.href = '/client-login';
+                                        location.href = "{{ route('client-login') }}";
                                     })
                                 }
                             }
