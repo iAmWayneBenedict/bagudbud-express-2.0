@@ -32,4 +32,10 @@ class ClientProfileController extends Controller
             return redirect('client-login');
         }
     }
+
+    public function add(Request $req) {
+        // get the data for the profile from the database then pass to the view
+        // include data in view
+        return view('client.client-profile', ['req' => $req->all()]);
+    }
 }

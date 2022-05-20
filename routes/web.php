@@ -56,6 +56,9 @@ Route::controller(ClientDashboardController::class)->middleware('AuthCheck')->gr
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');
     Route::get('/client-dashboard/cancelled', 'cancelledRequests');
     Route::get('/client-dashboard/cancelled/{id}', 'cancelledRequestsDetail')->where('id', '[0-9]+');
+    Route::get('/client-dashboard/password-and-security', 'clientPasswordAndSecurity');
+    Route::get('/client-dashboard/tracking', 'tracking');
+    Route::get('/client-dashboard/success', 'successDeliveries');
 });
 
 // Rider Controller --- Control Routes
