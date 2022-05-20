@@ -73,10 +73,10 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-                                    <a href="#" id="delete-acc">Delete Account</a>
+                                    <a href="/user_delete" id="delete-acc">Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="c_logout" class="text-danger">Logout</a>
+                                    <a href="/c_logout" class="text-danger">Logout</a>
                                 </li>
                             </ul>
                         </li>
