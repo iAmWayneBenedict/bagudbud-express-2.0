@@ -9,6 +9,7 @@ use App\Models\Client\ClientModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class ClientController extends Controller
@@ -132,7 +133,10 @@ class ClientController extends Controller
                 break;
             default:
                 $request->session()->put('user_id', $login_response);
+                return redirect('client-dashboard');
                 // return back()->with('success', $login_response);
         }   
     }
+
+   
 }

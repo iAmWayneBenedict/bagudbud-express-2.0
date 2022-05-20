@@ -49,12 +49,12 @@ class ClientModel extends Model
         DB::table('client_records')->insert($id);
     }
 
+    //login section
     public function login_process($email, $password){
         /* 
             param: email: client email for the account
             param: password: clear text password
         */
-
         // return values
         $not_verified = "E1";
         $email_not_found = "E2";
@@ -82,7 +82,7 @@ class ClientModel extends Model
         }
     }
 
-
+    //accout verification
     public function verify_account($vkey){
 
         //return values
@@ -102,5 +102,15 @@ class ClientModel extends Model
         else{
             return $cannot_veifiry_account;
         }      
+    }
+
+    //get client/user data from database
+    public static function get_user_data($id){
+        $data = DB::table('clients')
+            ->where('Client_id', $id)
+            ->select('f_name', 'l_name', 'email', 'contact_num', 'business_name', 'product_type', 'municipality', 'address', 'profile_pic')
+            ->first();
+
+        return $data;
     }
 }

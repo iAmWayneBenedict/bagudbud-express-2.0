@@ -43,14 +43,14 @@ Route::controller(ClientController::class)->group(function() {
 });
 
 // Client Profile Controller
-Route::controller(ClientProfileController::class)->group(function() {
+Route::controller(ClientProfileController::class)->middleware('AuthCheck')->group(function() {
     Route::get('/client-profile', 'index');
+    Route::get('/user_data', 'get_client_user_data')->name('user_data');
+    Route::get('/c_logout', 'c_logout');
 });
 
 // FClient Dashboard Controller --- Control Routes
-Route::controller(ClientDashboardController::class)->group(function() {
-    Route::get('/client-dashboard', 'index')->middleware('checkLogin');
-
+Route::controller(ClientDashboardController::class)->middleware('AuthCheck')->group(function() {
     Route::get('/client-dashboard', 'index');
     Route::get('/client-dashboard/notification', 'notifications');
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');

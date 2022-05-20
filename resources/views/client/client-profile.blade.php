@@ -18,6 +18,7 @@
                         <h4 class="text-black">My Profile</h4>
                     </div>
                     <div class="card-body position-relative" style="max-width: 50rem; width: 100%">
+                                  
                         <form action="" method="post" id="profile-form">
                             <div class="inner-container px-3 px-lg-5 d-flex flex-column align-items-center">
                                 <div class="profile-con avatar avatar-xxl border border-2 border-primary position-relative">
@@ -47,7 +48,7 @@
                                                 Name</label>
                                             <input type="text" name="f_name"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="first-name" placeholder="First Name">
+                                                id="first-name" placeholder="First Name" value="{{ $c_data->f_name}}">
                                         </div>
                                     </div>
 
@@ -60,7 +61,7 @@
                                                 Name</label>
                                             <input type="text" name="l_name"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="last-name" placeholder="Last Name">
+                                                id="last-name" placeholder="Last Name" value="{{ $c_data->l_name}}">
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +76,7 @@
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="email" placeholder="Email">
+                                                id="email" placeholder="Email" value="{{ $c_data->email}}">
                                         </div>
                                     </div>
 
@@ -88,7 +89,7 @@
                                                 Number</label>
                                             <input type="number" name="contact_num"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="phone-number" placeholder="Phone Number">
+                                                id="phone-number" placeholder="Phone Number" value="{{ $c_data->contact_num}}">
                                             <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
                                                 message!</span>
                                         </div>
@@ -105,7 +106,7 @@
                                                 Name</label>
                                             <input type="text" name="business_name"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="shop-name" placeholder="Shop Name">
+                                                id="shop-name" placeholder="Shop Name" value="{{ $c_data->business_name}}">
                                         </div>
                                     </div>
                                 </div>
@@ -121,7 +122,8 @@
                                             <select
                                                 class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary"
                                                 aria-label=".form-select-sm example" name="product_type">
-                                                <option selected>All</option>
+                                                <option selected >{{$c_data->product_type}}</option>
+                                                <option value="All">All</option>
                                                 <option value="Beauty Products">Beauty Products</option>
                                                 <option value="Fashion">Fashion</option>
                                                 <option value="Food">Food</option>
@@ -142,6 +144,7 @@
                                             <select
                                                 class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary"
                                                 aria-label=".form-select-sm example" name="municipality" id="Municipality">
+                                                <option selected >{{$c_data->municipality}}</option>
                                                 <option value="Baao">Baao</option>
                                                 <option value="Bato">Bato</option>
                                                 <option value="Balatan">Balatan</option>
@@ -158,28 +161,12 @@
                                     <div class="col">
                                         <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
                                             <label for="barangay"
-                                                class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Barangay</label>
-                                            <input type="text" name="barangay"
+                                                class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Zone/Street, Barangay</label>
+                                            <input type="text" name="address"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="barangay" placeholder="Barangay">
+                                                id="barangay" placeholder="Zone/Street, Barangay" value="{{ $c_data->address}}">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row w-100">
-
-                                    <!-- Zone / Street -->
-
-                                    <div class="col">
-                                        <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="zone-street"
-                                                class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Zone
-                                                / Street</label>
-                                            <input type="text" name="zonet"
-                                                class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="zone-street" placeholder="Zone / Street">
-                                        </div>
-                                    </div> 
-
                                 </div>
                                 <div class="mt-5 w-100">
                                     <!-- Profile avatar -->
@@ -343,42 +330,7 @@
 
             const $parent = $('.inner-container');
             let inputs = $('#profile-form').serializeArray();
-            $.ajax({
-                url: "getUserData",
-                method: "GET",
-                dataType: "json",
-                data: '',
-                success: function(res) {
-                    for (const key in res) {
-                        inputs.map((el) => {
-                            if (key === el.name) {
-                                if (key === 'gender' || key === 'product-name' || key ===
-                                    'Municipality') {
-                                    $parent.find(`select[name=${key}`).children().each(
-                                        function() {
-                                            $(this).removeAttr('selected')
-                                            if (res[key].toLowerCase() === $(this).val()
-                                                .toLowerCase()) {
-                                                $(this).attr('selected', 'true')
-                                            }
-                                        });
-                                } else if (key === 'profile-avatar') {
-                                    if (res[key] !== '') {
-                                        $('#profile-avatar').val(
-                                            `{{ asset('img/faces') }}/${res[key]}`
-                                        );
-                                        $('.profile-avatar-image').attr('src',
-                                            `{{ asset('img/faces') }}/${res[key]}`
-                                        );
-                                    }
-                                } else {
-                                    $parent.find(`input[name=${key}`).val(res[key]);
-                                }
-                            }
-                        })
-                    }
-                }
-            });
+            
         })
 
         $(document).ready(function() {

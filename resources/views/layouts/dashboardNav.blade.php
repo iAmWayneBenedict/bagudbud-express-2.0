@@ -76,7 +76,7 @@
                                     <a href="#" id="delete-acc">Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="" class="text-danger">Logout</a>
+                                    <a href="c_logout" class="text-danger">Logout</a>
                                 </li>
                             </ul>
                         </li>
