@@ -47,7 +47,7 @@ Route::controller(ClientProfileController::class)->middleware('AuthCheck')->grou
     Route::get('/client-dashboard/profile', 'index');
     Route::post('/client-dashboard/profile', 'updateProfile');
     Route::get('/user_data', 'get_client_user_data')->name('user_data');
-    Route::post('/user_delete', 'client_delete_account')->name('user_delete');
+    Route::get('/user_delete', 'client_delete_account')->name('user_delete');
     Route::get('/c_logout', 'c_logout');
 });
 
