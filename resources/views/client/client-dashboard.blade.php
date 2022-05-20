@@ -77,21 +77,22 @@
                                     <div class="card-body px-4 px-md-3 py-4">
                                         <div class="d-flex align-items-center">
                                             <div class="avatar avatar-xl">
-                                                <img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
-                                            <?php
-                                                //$logData['Avatar'] = empty($logData['Avatar']) ? "1.jpg" : $logData['Avatar'];
-                                                //echo '<img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">';
-                                            ?>
+                                                {{-- <img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1"> --}}
+                                            @if (empty($user_data->profile_pic))
+                                                 <img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
+                                            @else
+                                                <img src="{{ asset('img/faces/'.$user_data->profile_pic.'.jpg') }}" alt="Face 1">                              
+                                            @endif
                                             </div>
                                             <div class="ms-3 name">
 
                                                 <!-- Insert Client Name -->
 
-                                                <h5 class="font-bold text-black">Name</h5>
+                                                <h5 class="font-bold text-black">{{ $user_data->f_name}}</h5>
 
                                                 <!-- Insert Client Email -->
 
-                                                <h6 class="text-muted mb-0">B_name</h6>
+                                                <h6 class="text-muted mb-0">{{ $user_data->business_name}}</h6>
                                             </div>
                                         </div>
                                     </div>

@@ -81,7 +81,7 @@
                             </ul>
                         </li>
                         <li class="dashboard sidebar-item">
-                            <a href="/client-dashboard/pending" class='sidebar-link'>
+                            <a href="/client-dashboard" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>

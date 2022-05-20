@@ -124,6 +124,16 @@ class ClientModel extends Model
     }
 
     public static function delete_user_data($id){
-        
+
+    }
+
+    //dashboard (user name, bussines name, profile_pic)
+    public static function get_data_for_dashboard($id){
+        $data = DB::table('clients')
+        ->where('Client_id', $id)
+        ->select('f_name','business_name','profile_pic')
+        ->first();
+
+    return $data;
     }
 }

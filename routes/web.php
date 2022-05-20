@@ -48,7 +48,7 @@ Route::controller(ClientProfileController::class)->middleware('AuthCheck')->grou
     Route::post('/client-dashboard/profile', 'updateProfile');
     Route::get('/user_data', 'get_client_user_data')->name('user_data');
     Route::post('/user_delete', 'client_delete_account')->name('user_delete');
-    Route::get('/client-dashboard/c_logout', 'c_logout');
+    Route::get('/c_logout', 'c_logout');
 });
 
 // FClient Dashboard Controller --- Control Routes
