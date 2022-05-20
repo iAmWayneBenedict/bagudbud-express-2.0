@@ -19,7 +19,7 @@ class AlreadyLogin
     {
         // if the user is already login ..when user access the signup and login page the
         // user will back to its current page
-        if(Session::has('user_id') && (url('client-login') == $request->url() || url('client-signup') == $request->url())){
+        if(Session::exists('user_id') && (url('client-login') == $request->url() || url('client-signup') == $request->url())){
             // return redirect('client-dashboard');
             return back(); 
         }

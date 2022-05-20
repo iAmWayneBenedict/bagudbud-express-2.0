@@ -354,7 +354,7 @@
             //remove error messages
             $('.text-danger').addClass('d-none');
             $.ajax({
-                url: '{{ route('store') }}',
+                url: '{{ route('rider_store') }}',
                 method: 'post',
                 data: fdata,
                 cache: false,
