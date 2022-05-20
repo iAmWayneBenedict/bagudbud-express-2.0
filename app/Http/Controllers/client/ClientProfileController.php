@@ -37,6 +37,23 @@ class ClientProfileController extends Controller
         return view('client.client-profile', ['req' => $request->all(), 'c_data' => $c_data]);
     }
 
+    public function client_delete_account(){
+        $user_id = session('user_id');
+        $is_delete = ClientModel::where('Client_id', $user_id)->delete();
+
+        if($is_delete == 1){
+            return response()->json([
+                'code' => 200 
+            ]);
+        }
+        else{
+            return response()->json([
+                'code' => 404 
+            ]);
+        }
+        
+    }
+
     public function c_logout(Request $request){
         if(Session::has('user_id')){
             $request->session()->forget('user_id');

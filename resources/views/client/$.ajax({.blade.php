@@ -35,3 +35,14 @@ $.ajax({
         console.log(res)
     }
 });
+
+
+// if (res.code == 202) {
+    //     Swal.fire(
+    //         'Deleted!',
+    //         'Your account has been deleted.',
+    //         'success'
+    //     ).then(function() {
+    //         location.href = {{ route('client-login') }};
+    //     })
+    // }
