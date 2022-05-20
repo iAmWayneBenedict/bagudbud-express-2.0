@@ -113,4 +113,12 @@ class ClientModel extends Model
 
         return $data;
     }
+
+    public function update_user_data($id){
+
+    }
+
+    public static function delete_user_data($id){
+        
+    }
 }

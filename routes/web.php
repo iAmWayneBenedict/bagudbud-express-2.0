@@ -46,6 +46,7 @@ Route::controller(ClientController::class)->group(function() {
 Route::controller(ClientProfileController::class)->middleware('AuthCheck')->group(function() {
     Route::get('/client-profile', 'index');
     Route::get('/user_data', 'get_client_user_data')->name('user_data');
+    Route::post('/user_delete', 'client_delete_account')->name('user_delete');
     Route::get('/c_logout', 'c_logout');
 });
 

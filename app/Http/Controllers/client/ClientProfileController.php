@@ -23,7 +23,24 @@ class ClientProfileController extends Controller
     }
 
     public function updtae_profile(Request $request){
+        $user_id = session('user_id');
+    }
 
+    public function client_delete_account(){
+        $user_id = session('user_id');
+        $is_delete = ClientModel::where('Client_id', $user_id)->delete();
+
+        if($is_delete == 1){
+            return response()->json([
+                'code' => 200 
+            ]);
+        }
+        else{
+            return response()->json([
+                'code' => 404 
+            ]);
+        }
+        
     }
 
     public function c_logout(Request $request){
