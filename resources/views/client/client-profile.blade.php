@@ -348,36 +348,36 @@
             $('#delete-acc').click(function(e) {
                 e.preventDefault();
                 alert('ok');
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3CD87A',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Continue!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        console.log(1)
-                        $.ajax({
-                            type: "post",
-                            url: '{{ route('user_delete')}}',
-                            data: '',
-                            dataType: "json",
-                            success: function(res) {
-                                if (res.code == 200) {
-                                    Swal.fire(
-                                        'Deleted!',
-                                        'Your account has been deleted.',
-                                        'success'
-                                    ).then(function() {
-                                        location.href = '/client-login';
-                                    })
-                                }
-                            }
-                        });
-                    }
-                })
+                // Swal.fire({
+                //     title: 'Are you sure?',
+                //     text: "You won't be able to revert this!",
+                //     icon: 'warning',
+                //     showCancelButton: true,
+                //     confirmButtonColor: '#3CD87A',
+                //     cancelButtonColor: '#d33',
+                //     confirmButtonText: 'Continue!'
+                // }).then((result) => {
+                //     if (result.isConfirmed) {
+                //         console.log(1)
+                //         $.ajax({
+                //             type: "post",
+                //             url: '{{ route('user_delete')}}',
+                //             data: '',
+                //             dataType: "json",
+                //             success: function(res) {
+                //                 if (res.code == 200) {
+                //                     Swal.fire(
+                //                         'Deleted!',
+                //                         'Your account has been deleted.',
+                //                         'success'
+                //                     ).then(function() {
+                //                         location.href = '/client-login';
+                //                     })
+                //                 }
+                //             }
+                //         });
+                //     }
+                // })
             });
         });
     </script>
