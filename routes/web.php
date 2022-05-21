@@ -40,6 +40,7 @@ Route::controller(ClientController::class)->group(function() {
     Route::post("store", "store")->name("store");
     Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin')->name('client-login');
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
+    Route::get('/verify_email/{vkey}', 'verify_email');
 });
 
 // Client Profile Controller

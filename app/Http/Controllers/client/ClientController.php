@@ -82,7 +82,7 @@ class ClientController extends Controller
 
             $data = ['vkey' => $verification_key];
 
-            // Mail::to($email)->send(new RegisterSendEmail($data));
+            Mail::to($email)->send(new RegisterSendEmail($data));
             return response()->json([ 
                 'code' => 200,
                 'last_id' => $last_id,
@@ -98,13 +98,14 @@ class ClientController extends Controller
         return: back to the login form if unsuccessful with fail message
        */ 
        $verify_account = new ClientModel();
-
+        
        if($verify_account->verify_account($vkey) == 1){
-           return redirect('login');
+           return redirect('client-login');
        }
        else{
-           return redirect('login')->with('fail', 'Account Cannot Verified');
+           return redirect('client-login')->with('fail', 'Account Cannot Verified');
        }
+    // echo 'goods';
     }
 
     public function clientLogin() {
@@ -138,6 +139,8 @@ class ClientController extends Controller
                 // return back()->with('success', $login_response);
         }   
     }
+
+    
 
    
 }
