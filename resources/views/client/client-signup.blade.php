@@ -321,7 +321,7 @@
                             alert(res.msg);
                             $('#form').trigger('reset')
                             location.href = "/client-login"
-                            //it should be clear the form inputs and alert a message
+                            //it should clear the form inputs and alert a message
                         }
                         if (res.code == 404) {
                             $.each(res.errors, function(key, val) {

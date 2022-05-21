@@ -115,8 +115,9 @@ class ClientModel extends Model
     }
 
     public static function updateCLientProfile($id, $data) {
-        
+        // update the data in the db based on the id
         $affected = DB::table('clients')->where('client_id', $id)->update($data);
+        // return the affected rows
         return $affected;
     }
     
@@ -131,6 +132,6 @@ class ClientModel extends Model
         ->select('f_name','business_name','profile_pic')
         ->first();
 
-    return $data;
+        return $data;
     }
 }
