@@ -295,7 +295,6 @@
                 // insert on success
                 $currentProfile.attr('src', "{{ asset('img/faces') }}" +
                     "/" + $data[0].value + ".jpg")
-                console.log($data[0].value)
                 $('#profile-avatar').val($data[0].value);
                 // setTimeout(() => {
                     $('.avatar-container').addClass('d-none');
@@ -334,49 +333,6 @@
             let inputs = $('#profile-form').serializeArray();
             
         })
-
-        $(document).ready(function() {
-            
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            //delete account.. direct from server
-            $('#delete-acc').click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3CD87A',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Continue!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        console.log(1)
-                        $.ajax({
-                            type: "get",
-                            url: '{{ route('user_delete')}}',
-                            data: '',
-                            dataType: "json",
-                            success: function(res) {
-                                if (res.code == 200) {
-                                    Swal.fire(
-                                        'Deleted!',
-                                        'Your account has been deleted.',
-                                        'success'
-                                    ).then(function() {
-                                        location.href = "{{ route('client-login') }}";
-                                    })
-                                }
-                            }
-                        });
-                    }
-                })
-            });
-        });
+        
     </script>
 @endsection
