@@ -450,7 +450,7 @@
                                         'Your account has been deleted.',
                                         'success'
                                     ).then(function() {
-                                        location.href = "{{ route('client-login') }}";
+                                        location.href = "{{ url('client-login') }}";
                                     })
                                 }
                             }
