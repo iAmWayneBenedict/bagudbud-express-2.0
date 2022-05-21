@@ -73,11 +73,7 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-<<<<<<< HEAD
-                                    <a href="" id="delete-acc">Delete Account</a>
-=======
                                     <a href="/user_delete" id="delete-acc">Delete Account</a>
->>>>>>> e111dc134b126f48b165f183c2cd4db6f6cf9287
                                 </li>
                                 <li class="submenu-item">
                                     <a href="/c_logout" class="text-danger">Logout</a>
