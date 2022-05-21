@@ -47,7 +47,7 @@
                 <div class="sidebar-header">
                     <div class="">
                         <div class="logo d-flex">
-                            <a href="index.html" class="w-100"><img
+                            <a href="{{url('client-dashboard')}}" class="w-100"><img
                                     src="{{ asset('img/Artboard 12@72x-8.png') }}" alt="Logo" srcset=""
                                     class="h-50"></a>
                         </div>
@@ -73,7 +73,7 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-                                    <a href="/user_delete" id="delete-acc">Delete Account</a>
+                                    <a id="delete-acc" style="cursor: pointer">Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="/c_logout" class="text-danger">Logout</a>
@@ -450,7 +450,7 @@
                                         'Your account has been deleted.',
                                         'success'
                                     ).then(function() {
-                                        location.href = "{{ route('client-login') }}";
+                                        location.href = '{{ url('client-login') }}';
                                     })
                                 }
                             }
