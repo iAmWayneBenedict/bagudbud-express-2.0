@@ -37,7 +37,7 @@ class ForgotPassController extends Controller
         if(ForgotPassModel::client_update_reset_code($request->email, $FiveDigitRandomNumber)){
             $data = ['code' => $FiveDigitRandomNumber];
 
-            // Mail::to($email)->send(new RegisterSendEmail($data));
+            Mail::to($request->email)->send(new RegisterSendEmail($data));
             return response()->json([
                 'code' => 202,
             ]);
