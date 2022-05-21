@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\RegisterSendEmail;
 use App\Models\ForgotPassModel;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class ForgotPassController extends Controller
@@ -111,7 +113,7 @@ class ForgotPassController extends Controller
         if(ForgotPassModel::rider_update_reset_code($request->email, $FiveDigitRandomNumber)){
             $data = ['code' => $FiveDigitRandomNumber];
 
-            // Mail::to($email)->send(new RegisterSendEmail($data));
+            Mail::to($request->email)->send(new RegisterSendEmail($data));
             return response()->json([
                 'code' => 202,
             ]);
