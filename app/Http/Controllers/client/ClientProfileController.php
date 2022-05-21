@@ -41,11 +41,12 @@ class ClientProfileController extends Controller
     }
 
     // user/client delete account
-    public function client_delete_account(){
+    public function client_delete_account(Request $request){
         $user_id = session('user_id');
         $is_delete = ClientModel::where('Client_id', $user_id)->delete();
 
         if($is_delete == 1){
+            $request->session()->forget('user_id');
             return response()->json([
                 'code' => 200 
             ]);
