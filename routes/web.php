@@ -36,9 +36,13 @@ Route::controller(HomeController::class)->group(function() {
 // Client Controller --- Control Routes
 Route::controller(ClientController::class)->group(function() {
     // Route::get("/users", "viewLoad");
-    Route::get("/client-signup", "clientSignup");
+    Route::get("/client-signup", "clientSignup")->middleware('AlreadyLogin');
     Route::post("store", "store")->name("store");
+<<<<<<< HEAD
     Route::get("/client-login", "clientLogin")->name('client-login');
+=======
+    Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin');
+>>>>>>> e111dc134b126f48b165f183c2cd4db6f6cf9287
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 
@@ -67,7 +71,7 @@ Route::controller(ClientDashboardController::class)->middleware('AuthCheck')->gr
 Route::controller(RiderController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/rider-signup", "riderSignup");
-    Route::post("/rider_store", "store")->name("store");
+    Route::post("/rider_store", "store")->name("rider_store");
     Route::get("/rider-login", "riderLogin");
     Route::post("/rider-login_Auth", "rider_login_Auth")->name("rider-login_Auth");
 });
