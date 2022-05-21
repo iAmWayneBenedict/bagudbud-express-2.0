@@ -100,10 +100,10 @@ class ClientController extends Controller
        $verify_account = new ClientModel();
 
        if($verify_account->verify_account($vkey) == 1){
-           return redirect('login');
+           return redirect('client-login');
        }
        else{
-           return redirect('login')->with('fail', 'Account Cannot Verified');
+           return redirect('client-login')->with('fail', 'Account Cannot Verified');
        }
     }
 
