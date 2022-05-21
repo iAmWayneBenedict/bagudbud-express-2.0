@@ -254,22 +254,25 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script type="text/javascript">
         $(() => {
-
+            // to exit or close the profile choices 
             $(document).click((event) => {
                 if (event.target.tagName === 'BODY') {
                     $('.avatar-container').addClass('d-none');
                     $('body').removeClass('popup-blur-active');
                 }
-
             })
-
+            // gets the current profile from the first child element of profile-con
             let $currentProfile = $('.profile-con').children().first()
             $('.profile-con').click(() => {
+                // display the profile choices by removing the class of d-none
                 $('.avatar-container').removeClass('d-none');
+                // add bg blur
                 $('body').addClass('popup-blur-active');
 
+                // get all the input fields with the attribute of avatar
                 let $inputs = $('input[name=avatar')
 
+                // loop through the inputs then  
                 $inputs.each(function() {
 
                     $(this).change(function() {
@@ -292,14 +295,14 @@
                 e.preventDefault();
                 let $data = $('#avatar-form').serializeArray()
 
-                // insert on success
+                // insert img src on success
                 $currentProfile.attr('src', "{{ asset('img/faces') }}" +
                     "/" + $data[0].value + ".jpg")
                 $('#profile-avatar').val($data[0].value);
-                // setTimeout(() => {
+                setTimeout(() => {
                     $('.avatar-container').addClass('d-none');
                     $('body').removeClass('popup-blur-active');
-                // }, 150)
+                }, 150)
             })
 
             $('#search').keyup(function() {
@@ -311,7 +314,6 @@
                     })
                 } else {
                     $des.addClass('d-none');
-
                 }
             })
             $('#search-form').submit(function(event) {
