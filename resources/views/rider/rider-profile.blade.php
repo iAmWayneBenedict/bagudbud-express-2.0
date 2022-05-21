@@ -19,9 +19,10 @@
                     </div>
                     <div class="card-body position-relative" style="max-width: 50rem; width: 100%">
                         <form action="" method="post" id="profile-form">
+                            @csrf
                             <div class="inner-container px-3 px-lg-5 d-flex flex-column align-items-center">
                                 <div class="profile-con avatar avatar-xxl border border-2 border-primary position-relative">
-                                    <img class="profile-avatar-image" src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
+                                    <img class="profile-avatar-image" src="{{ asset("img/faces/".$c_data->profile_pic) }}.jpg" alt="Face 1">
                                     <div
                                         class="overlay position-absolute w-100 h-100 rounded-circle overflow-hidden d-flex justify-content-center align-items-center">
                                         <span class="fw-bold" style="opacity: 0.7;">Change Profile Image</span>
@@ -159,56 +160,56 @@
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/1.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="1.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="1">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/2.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="2.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="2">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/3.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="3.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="3">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/4.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="4.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="4">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/5.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="5.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="5">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/6.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="6.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="6">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/7.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="7.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="7">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
                                         <div class="col-3 p-3 d-flex align-items-center justify-content-center">
                                             <div class="avatar-con avatar avatar-xl2 position-relative">
                                                 <img src="{{ asset('img/faces/8.jpg') }}" alt="Face 1">
-                                                <input type="radio" name="avatar" id="avatar-icons" value="8.jpg">
+                                                <input type="radio" name="avatar" id="avatar-icons" value="8">
                                                 <span class="border-overlay"></span>
                                             </div>
                                         </div>
@@ -266,8 +267,9 @@
 
                 // insert on success
                 $currentProfile.attr('src', "{{ asset('images/faces') }}" +
-                    "/" + $data[0].value)
+                    "/" + $data[0].value + ".jpg")
                 $('#profile-avatar').val($data[0].value);
+                console.log($('#profile-avatar').val())
                 setTimeout(() => {
                     $('.avatar-container').addClass('d-none');
                     $('body').removeClass('popup-blur-active');

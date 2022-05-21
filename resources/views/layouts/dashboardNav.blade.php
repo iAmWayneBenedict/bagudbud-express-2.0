@@ -73,7 +73,11 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
+<<<<<<< HEAD
+                                    <a href="" id="delete-acc">Delete Account</a>
+=======
                                     <a href="/user_delete" id="delete-acc">Delete Account</a>
+>>>>>>> e111dc134b126f48b165f183c2cd4db6f6cf9287
                                 </li>
                                 <li class="submenu-item">
                                     <a href="/c_logout" class="text-danger">Logout</a>
@@ -415,9 +419,50 @@
 
             $("input").attr("required", true);
             $("select").attr("required", true);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            //delete account.. direct from server
+            $('#delete-acc').click(function(e) {
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3CD87A',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Continue!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        console.log(1)
+                        $.ajax({
+                            type: "get",
+                            url: '{{ route('user_delete')}}',
+                            data: '',
+                            dataType: "json",
+                            success: function(res) {
+                                console.log(res)
+                                if (res.code == 200) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your account has been deleted.',
+                                        'success'
+                                    ).then(function() {
+                                        location.href = "{{ route('client-login') }}";
+                                    })
+                                }
+                            }
+                        });
+                    }
+                })
+            });
         });
-        
-        
     </script>
 
 </body>
