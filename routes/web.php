@@ -38,7 +38,7 @@ Route::controller(ClientController::class)->group(function() {
     // Route::get("/users", "viewLoad");
     Route::get("/client-signup", "clientSignup")->middleware('AlreadyLogin');
     Route::post("store", "store")->name("store");
-    Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin');
+    Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin')->name('client-login');
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
 });
 
