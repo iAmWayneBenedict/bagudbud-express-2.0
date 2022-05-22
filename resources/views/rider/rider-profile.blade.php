@@ -40,12 +40,12 @@
 
                                     <div class="col">
                                         <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="first-name"
+                                            <label for="f_name"
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">First
                                                 Name</label>
-                                            <input type="text" name="first-name"
+                                            <input type="text" name="f_name"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="first-name" placeholder="First Name">
+                                                id="f_name" placeholder="First Name" value="{{ $c_data->f_name }}">
                                         </div>
                                     </div>
 
@@ -53,12 +53,12 @@
 
                                     <div class="col">
                                         <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="last-name"
+                                            <label for="l_name"
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Last
                                                 Name</label>
-                                            <input type="text" name="last-name"
+                                            <input type="text" name="l_name"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="last-name" placeholder="Last Name">
+                                                id="l_name" placeholder="Last Name" value="{{ $c_data->l_name }}">
                                         </div>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="email" placeholder="Email">
+                                                id="email" placeholder="Email" value="{{ $c_data->email }}">
                                         </div>
                                     </div>
                                 </div>
@@ -82,12 +82,12 @@
                                 <div class="row w-100">
                                     <div class="col">
                                         <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="phone-number"
+                                            <label for="contact_num"
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Phone
                                                 Number</label>
-                                            <input type="number" name="phone-number"
+                                            <input type="number" name="contact_num"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="phone-number" placeholder="Phone Number">
+                                                id="contact_num" placeholder="Phone Number" value="{{ $c_data->contact_num }}">
                                             <span class="text-danger text-center display-8 fw-bold mt-2 d-none alerts">Error
                                                 message!</span>
                                         </div>
@@ -102,29 +102,30 @@
                                             <label for="municipality"
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Municipality</label>
                                             <select
-                                                class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                aria-label=".form-select-sm example" name="Municipality" id="Municipality">
-                                                <option value="Baao">Baao</option>
-                                                <option value="Bato">Bato</option>
-                                                <option value="Balatan">Balatan</option>
-                                                <option value="Bula">Bula</option>
-                                                <option value="Buhi">Buhi</option>
-                                                <option value="Nabua">Nabua</option>
-                                                <option value="Iriga City">Iriga City</option>
+                                                class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary select-input"
+                                                aria-label=".form-select-sm example" name="municipality" id="municipality"> 
+                                                    <option selected >{{$c_data->municipality}}</option>
+                                                    <option value="Baao">Baao</option>
+                                                    <option value="Bato">Bato</option>
+                                                    <option value="Balatan">Balatan</option>
+                                                    <option value="Bula">Bula</option>
+                                                    <option value="Buhi">Buhi</option>
+                                                    <option value="Nabua">Nabua</option>
+                                                    <option value="Iriga City">Iriga City</option>
                                             </select>
                                         </div>
                                     </div>
 
-                                    <!-- Barangay -->
+                                    <!-- Address -->
 
                                     <div class="col">
                                         <div class="mt-xxl-3 mb-lg-2 d-flex flex-column">
-                                            <label for="barangay"
+                                            <label for="address"
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Zone/street,
                                                 Barangay</label>
-                                            <input type="text" name="barangay"
+                                            <input type="text" name="address"
                                                 class="form-control form-control-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                id="barangay" placeholder="Zone/street, Barangay">
+                                                id="address" placeholder="Zone/street, Barangay" value="{{ $c_data->address }}">
                                         </div>
                                     </div>
                                 </div>
@@ -135,8 +136,9 @@
                                                 class="fw-bold display-7 form-label col-form-label col-form-label-sm mt-1 mt-lg-0">Vehicle
                                                 Type</label>
                                             <select
-                                                class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary"
-                                                aria-label=".form-select-sm example" name="vehicle-type" id="vehicle-type">
+                                                class="form-select form-select-sm py-2 fw-lighter border-primary bg-light-primary select-input"
+                                                aria-label=".form-select-sm example" name="vehicle_type" id="vehicle-type"">
+                                                <option selected >{{$c_data->vehicle_type}}</option>
                                                 <option value="Motorcycle">Motorcycle</option>
                                                 <option value="Bicycle">Bicycle</option>
                                             </select>
@@ -145,7 +147,7 @@
                                 </div>
                                 <div class="mt-5 w-100">
                                     <!-- Profile avatar -->
-                                    <input type="hidden" name="profile-avatar" id="profile-avatar">
+                                    <input type="hidden" name="profile_pic" id="profile-avatar" value="1">
 
                                     <!-- Submit btn -->
                                     <input type="submit" class="btn btn-primary px-5 py-2" value="Save">
@@ -229,6 +231,7 @@
     <script type="text/javascript">
         $(() => {
 
+            // to exit or close the profile choices 
             $(document).click((event) => {
                 if (event.target.tagName === 'BODY') {
                     $('.avatar-container').addClass('d-none');
@@ -237,13 +240,16 @@
 
             })
 
+            // gets the current profile from the first child element of profile-con
             let $currentProfile = $('.profile-con').children().first()
             $('.profile-con').click(() => {
+                // display the profile choices by removing the class of d-none
                 $('.avatar-container').removeClass('d-none');
                 $('body').addClass('popup-blur-active');
 
+                // get all the input fields with the attribute of avatar
                 let $inputs = $('input[name=avatar')
-
+                // loop through the inputs then set the avatar active
                 $inputs.each(function() {
 
                     $(this).change(function() {
@@ -261,19 +267,19 @@
                 })
             })
 
+            // change profile avatar 
             $('#avatar-form').submit(function(e) {
                 e.preventDefault();
                 let $data = $('#avatar-form').serializeArray()
 
-                // insert on success
-                $currentProfile.attr('src', "{{ asset('images/faces') }}" +
+                // insert img src on success
+                $currentProfile.attr('src', "{{ asset('img/faces') }}" +
                     "/" + $data[0].value + ".jpg")
                 $('#profile-avatar').val($data[0].value);
-                console.log($('#profile-avatar').val())
                 setTimeout(() => {
                     $('.avatar-container').addClass('d-none');
                     $('body').removeClass('popup-blur-active');
-                }, 750)
+                }, 150)
             })
 
             $('#search').keyup(function() {
@@ -288,6 +294,7 @@
 
                 }
             })
+
             $('#search-form').submit(function(event) {
                 event.preventDefault();
 
@@ -302,121 +309,68 @@
                 }
             })
 
-            // profile form
-            const $parent = $('.inner-container');
-            let inputs = $('#profile-form').serializeArray();
-            $.ajax({
-                url: "getRiderData",
-                method: "GET",
-                dataType: "json",
-                data: '',
-                success: function(res) {
-                    for (const key in res) {
-                        inputs.map((el) => {
-                            if (key === el.name) {
-                                if (key === 'gender' || key === 'vehicle-type' || key ===
-                                    'Municipality') {
-                                    $parent.find(`select[name=${key}]`).children().each(
-                                        function() {
-                                            $(this).removeAttr('selected');
-                                            if (res[key].toLowerCase() === $(this).val()
-                                                .toLowerCase()) {
-                                                $(this).attr('selected', 'true');
-                                            }
-                                        });
-                                } else if (key === 'profile-avatar') {
-                                    if (res[key] !== '') {
-                                        $('#profile-avatar').val(
-                                            `{{ asset('images/faces') }}/${res[key]}`
-                                        );
-                                        $('.profile-avatar-image').attr('src',
-                                            `{{ asset('images/faces') }}/${res[key]}`
-                                        );
-                                    }
-
-                                } else {
-                                    $parent.find(`input[name=${key}]`).val(res[key]);
-                                }
-                            }
-                        })
-                    }
-                }
-            });
+            
         })
 
         $(document).ready(function() {
-            var bool_number = true;
+            
 
-            $('input[type=number]').keyup(function(e) {
-                var num = $(this).val();
-                var filter = /^(09|\+63)\d{9}$/;
-                if (filter.test(num)) {
-                    // alert('ok');
-                    $(this).next().text('').addClass('d-none');
-                    bool_number = true;
-                } else {
-                    // alert('no');
-                    $(this).next().text('Invalid Number').removeClass('d-none');
-                    bool_number = false;
-                }
-            });
+            // $('#profile-form').submit(function(e) {
+            //     e.preventDefault();
 
-            $('#profile-form').submit(function(e) {
-                e.preventDefault();
+            //     if (bool_number) {
+            //         var data = new FormData(this);
+            //         $.ajax({
+            //             type: "post",
+            //             url: "RiderProfile/editProfile",
+            //             data: data,
+            //             dataType: "json",
+            //             contentType: false,
+            //             cache: false,
+            //             processData: false,
+            //             success: function(res) {
+            //                 console.log(res);
+            //                 if (res.code == 505) {
+            //                     Swal.fire({
+            //                         icon: 'error',
+            //                         title: 'Oops...',
+            //                         text: res.msg
+            //                     });
+            //                 } else {
+            //                     const Toast = Swal.mixin({
+            //                         toast: true,
+            //                         position: 'top-end',
+            //                         showConfirmButton: false,
+            //                         timer: 2000,
+            //                         timerProgressBar: false,
+            //                         didOpen: (toast) => {
+            //                             toast.addEventListener('mouseenter', Swal
+            //                                 .stopTimer)
+            //                             toast.addEventListener('mouseleave', Swal
+            //                                 .resumeTimer)
+            //                         }
+            //                     })
 
-                if (bool_number) {
-                    var data = new FormData(this);
-                    $.ajax({
-                        type: "post",
-                        url: "RiderProfile/editProfile",
-                        data: data,
-                        dataType: "json",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(res) {
-                            console.log(res);
-                            if (res.code == 505) {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Oops...',
-                                    text: res.msg
-                                });
-                            } else {
-                                const Toast = Swal.mixin({
-                                    toast: true,
-                                    position: 'top-end',
-                                    showConfirmButton: false,
-                                    timer: 2000,
-                                    timerProgressBar: false,
-                                    didOpen: (toast) => {
-                                        toast.addEventListener('mouseenter', Swal
-                                            .stopTimer)
-                                        toast.addEventListener('mouseleave', Swal
-                                            .resumeTimer)
-                                    }
-                                })
-
-                                Toast.fire({
-                                    icon: 'success',
-                                    title: res.msg
-                                }).then(function() {
-                                    // $(this)[0].reset();
-                                    // $('body').removeClass('popup-blur-active');
-                                    // $('.popup-container').removeClass('popup-active');
-                                    // window.location.reload();
-                                });
-                            }
-                        }
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!'
-                    });
-                }
-            });
+            //                     Toast.fire({
+            //                         icon: 'success',
+            //                         title: res.msg
+            //                     }).then(function() {
+            //                         // $(this)[0].reset();
+            //                         // $('body').removeClass('popup-blur-active');
+            //                         // $('.popup-container').removeClass('popup-active');
+            //                         // window.location.reload();
+            //                     });
+            //                 }
+            //             }
+            //         });
+            //     } else {
+            //         Swal.fire({
+            //             icon: 'error',
+            //             title: 'Oops...',
+            //             text: 'Something went wrong!'
+            //         });
+            //     }
+            // });
 
 
             // alert('ok');

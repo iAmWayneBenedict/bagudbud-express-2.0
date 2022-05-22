@@ -67,4 +67,21 @@ class RiderModel extends Model
             return $email_not_found;
         }
     }
+
+    //get rider/user data from database
+    public static function get_rider_data($id){
+        $data = DB::table('riders')
+            ->where('rider_id', $id)
+            ->select('f_name', 'l_name', 'email', 'contact_num', 'vehicle_type', 'municipality', 'address', 'profile_pic')
+            ->first();
+
+        return $data;
+    }
+
+    public static function updateRiderProfile($id, $data) {
+        // update the data in the db based on the id
+        $affected = DB::table('riders')->where('rider_id', $id)->update($data);
+        // return the affected rows
+        return $affected;
+    }
 }

@@ -11,7 +11,7 @@ class ClientDashboardController extends Controller
     public function index() {
         $user_id = session('user_id');  
         $user_data = ClientModel::get_user_data($user_id);
-
+        
         return view('client.client-dashboard', compact('user_data'));
     }
 
