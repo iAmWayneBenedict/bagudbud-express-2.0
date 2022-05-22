@@ -272,7 +272,7 @@
                 // get all the input fields with the attribute of avatar
                 let $inputs = $('input[name=avatar')
 
-                // loop through the inputs then  
+                // loop through the inputs then  set the avatar active
                 $inputs.each(function() {
 
                     $(this).change(function() {
@@ -305,34 +305,9 @@
                 }, 150)
             })
 
-            $('#search').keyup(function() {
-                const $des = $('.no-request').prev();
-                if (!$(this).val()) {
-                    $des.removeClass('d-none');
-                    $des.nextAll().each(function() {
-                        $(this).addClass('d-none')
-                    })
-                } else {
-                    $des.addClass('d-none');
-                }
-            })
-            $('#search-form').submit(function(event) {
-                event.preventDefault();
 
-                if ($('#search').val()) {
-                    $('.no-request').addClass('d-none')
-                    $('.result').removeClass('d-none')
-
-                } else {
-                    $('.no-request').removeClass('d-none')
-                    $('.result').addClass('d-none')
-                    $('.no-request').prev().addClass('d-none');
-                }
-            })
-
-
-            const $parent = $('.inner-container');
-            let inputs = $('#profile-form').serializeArray();
+            // const $parent = $('.inner-container');
+            // let inputs = $('#profile-form').serializeArray();
             
         })
         

@@ -66,14 +66,14 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item edit-profile">
-                                    <a href="/rider-profile">My Profile</a>
+                                    <a href="/rider-dashboard/profile">My Profile</a>
                                 </li>
                                 <li class="submenu-item password-and-security">
-                                    <a href="/rider-profile-and-password">Password and
+                                    <a href="/rider-dashboard/profile-and-password">Password and
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-                                    <a href="/rider-delete-account" id="delete-acc">Delete Account</a>
+                                    <a href="/rider-dashboard/delete-account" id="delete-acc">Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
                                     <a href="" class="text-danger">Logout</a>
@@ -122,7 +122,7 @@
     <!-- Scripts -->
     <script type="text/javascript">
         $(document).ready(function() {
-            reloadTable();
+            // reloadTable();
 
             function reloadTable() {
                 $.ajax({
@@ -147,10 +147,11 @@
             }
         });
         $(() => {
-
+            // to get the cu
             let getUrl = window.location;
             let baseUrl = `${getUrl.origin}/${getUrl.pathname.split('/')[0]}`;
-            let currentUrl = getUrl.pathname.split('/')[1];
+            let currentUrl = getUrl.pathname.split('/')[2];
+            console.log(currentUrl)
             $('.items').each(function() {
                 $(this).click(function() {
                     // delivery details path
@@ -190,7 +191,23 @@
                 $('.profile').find('ul').addClass('active')
             }
 
-            // end
+            var bool_number = true;
+            //to filter out valid phone number
+            $('input[type=number]').keyup(function(e) {
+                var num = $(this).val();
+                var filter = /^(09|\+63)\d{9}$/;
+                if (filter.test(num)) {
+                    // alert('ok');
+                    $(this).next().text('').addClass('d-none');
+                    bool_number = true;
+                } else {
+                    // alert('no');
+                    $(this).next().text('Invalid Number').removeClass('d-none');
+                    bool_number = false;
+                }
+            });
+
+            // delete account via ajax
 
             $('#delete-acc').click(function(e) {
                 e.preventDefault();
@@ -207,8 +224,8 @@
                     if (result.isConfirmed) {
 
                         $.ajax({
-                            type: "post",
-                            url: "deleteAccount",
+                            type: "get",
+                            url: "{{ route('deleteAccount') }}",
                             data: '',
                             dataType: "json",
                             success: function(res) {

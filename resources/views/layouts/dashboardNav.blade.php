@@ -134,7 +134,7 @@
                 class="popup-container container-fluid position-absolute top-50 start-50 translate-middle justify-content-center row">
                 <div class="col-11 col-md-9 col-lg-8 col-xl-6 col-xxl-5 p-4 card">
                     <div class="card-body">
-                        <form method="post" action="" class="" id="form">
+                        <form method="post" action="" class="" id="req-form">
                             <div class="d-inline-flex">
                                 <h5 class="card-title position-relative title text-black"><span
                                         class="add-request-title">Add</span> Request</h5>
@@ -287,9 +287,8 @@
                     location.href = `${baseUrl}client-dashboard/${currentUrl}/${id}`;
                 });
             });
-
             // implement active functionality in sidebaar
-            if (currentUrl === 'pending' || currentUrl === 'deliveries') {
+            if (currentUrl === undefined || currentUrl === 'deliveries') {
                 $('.menu').children().not($('.dashboard')).each(function() {
                     $(this).removeClass('active')
                 })
@@ -347,7 +346,7 @@
             })
             $('.pending-btn').click(() => {
                 // redirect to pending page
-                location.href = `${baseUrl}client-dashboard/pending`;
+                location.href = `${baseUrl}client-dashboard`;
             })
             $('.active-deliveries-btn').click(() => {
                 // redirect to deliveries page

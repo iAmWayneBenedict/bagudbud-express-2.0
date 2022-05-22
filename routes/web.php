@@ -40,10 +40,10 @@ Route::controller(ClientController::class)->group(function() {
     Route::post("store", "store")->name("store");
     Route::get("/client-login", "clientLogin")->middleware('AlreadyLogin')->name('client-login');
     Route::post("/login_Auth", "login_Auth")->name("login_Auth");
-    // Route::get("/verify_email/{vkey}", "verify_email")->name("verify_email");
+    Route::get("/verify_email/{vkey}", "verify_email")->name("verify_email");
 });
 
-Route::get('/verify_email/{vkey}', [ClientController::class, 'verify_email'])->name('verify_email');
+// Route::get('/verify_email/{vkey}', [ClientController::class, 'verify_email'])->name('verify_email');
 
 // Client Profile Controller
 Route::controller(ClientProfileController::class)->middleware('AuthCheck')->group(function() {
@@ -57,6 +57,7 @@ Route::controller(ClientProfileController::class)->middleware('AuthCheck')->grou
 // FClient Dashboard Controller --- Control Routes
 Route::controller(ClientDashboardController::class)->middleware('AuthCheck')->group(function() {
     Route::get('/client-dashboard', 'index');
+    Route::get('/client-dashboard/deliveries', 'index');
     Route::get('/client-dashboard/notification', 'notifications');
     Route::get('/client-dashboard/notification/{id}', 'notificationDetail')->where('id', '[0-9]+');
     Route::get('/client-dashboard/cancelled', 'cancelledRequests');
@@ -77,9 +78,10 @@ Route::controller(RiderController::class)->group(function() {
 
 // Rider Profile Controller
 Route::controller(RiderProfileController::class)->group(function() {
-    Route::get('/rider-profile', 'index');
-    Route::get('/rider-delete-account', 'deleteAccount');
-    Route::get('/rider-profile-and-password', 'passwordAndSecurity');
+    Route::get('/rider-dashboard/profile', 'index');
+    Route::post('/rider-dashboard/profile', 'updateRiderProfile');
+    Route::get('/rider-dashboard/delete-account', 'deleteAccount')->name('deleteAccount');
+    Route::get('/rider-dashboard/profile-and-password', 'passwordAndSecurity');
 });
 
 // Rider Dashboard Controller

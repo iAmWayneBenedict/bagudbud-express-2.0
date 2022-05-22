@@ -37,8 +37,8 @@ class RiderController extends Controller
                 return back()->with('fail', 'Password not match');
                 break;
             default:
-                // $request->session()->put('user_id', $login_response);
-                return back()->with('success', $login_response);
+                $request->session()->put('user_rider_id', $login_response);
+                return redirect('rider-dashboard');
         }   
     }
     

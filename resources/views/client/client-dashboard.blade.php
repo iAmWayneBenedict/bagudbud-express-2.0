@@ -118,8 +118,6 @@
 
                                                 <!-- item start -->
                                                 <!-- change the aria-label. change the number only based on the id in db ex. for the next item data-label="item-2" -->
-                                               
-                                                
                                             </tbody>
                                         </table>
                                     </div>
