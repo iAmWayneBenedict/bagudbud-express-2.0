@@ -44,15 +44,76 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        
-                                        
+                                        @if (isset($data))
+                                            @foreach ($data as $row)
+                                                <tr>
+                                                    <td>{{ $row->rider_id }}</td>
+                                                    <td>{{ $row->f_name . " " . $row->l_name }}</td>
+                                                    <td>{{ $row->email }}</td>
+                                                    <td>{{ $row->vehicle_type }}</td>
+                                                    <td>{{ $row->apply_date }}</td>
+                                                    <td>
+                                                        <div class="d-flex justify-content-center align-items-center">
+                                                            <form action="/applications/verify" method="post">
+                                                                @csrf
+                                                                <button type="submit" class="hire-now btn btn-primary me-2" name="id" value="{{ $row->rider_id }}"><i class="bi bi-person-plus"></i></button>
+                                                            </form>
+                                                            <form action="">
+                                                                <button class="delete-item-btn btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                            </form>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </main>
+                
                 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                {{ app('request')->input('fail') }}
+                @if (app('request')->input('success'))
+                    <script>
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'success',
+                            title: "You have successfully verified!"
+                        })
+                    </script>
+                @elseif (app('request')->input('fail'))
+                    <script>
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+
+                        Toast.fire({
+                            icon: 'error',
+                            title: "Verification Error!"
+                        })
+                    </script>
+                @endif
                 <script>
                     $(() => {
                         $('table').click( e => {
@@ -64,110 +125,13 @@
                                 self.classList.remove('btn-primary');
                                 self.classList.add('btn-success');
 
-                                // $.ajax({
-                                //     type: "post",
-                                //     url: "",
-                                //     data: {
-                                //         cid: nodelist[0].textContent,
-                                //         email: nodelist[2].textContent
-                                //     },
-                                //     dataType: "json",
-                                //     success: function (res) {
-                                //         console.log(res.msg)
-                                //         if(res.code == 202){
-                                //             const Toast = Swal.mixin({
-                                //                 toast: true,
-                                //                 position: 'top-end',
-                                //                 showConfirmButton: false,
-                                //                 timer: 2000,
-                                //                 timerProgressBar: true,
-                                //                 didOpen: (toast) => {
-                                //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-                                //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                //                 }
-                                //             })
-
-                                //             Toast.fire({
-                                //                 icon: 'success',
-                                //                 title: res.msg
-                                //             }).then(() => {
-                                //                     location.reload()
-                                //             })
-                                //         }else{
-                                //             const Toast = Swal.mixin({
-                                //                 toast: true,
-                                //                 position: 'top-end',
-                                //                 showConfirmButton: false,
-                                //                 timer: 2000,
-                                //                 timerProgressBar: true,
-                                //                 didOpen: (toast) => {
-                                //                     toast.addEventListener('mouseenter', Swal.stopTimer)
-                                //                     toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                //                 }
-                                //             })
-
-                                //             Toast.fire({
-                                //                 icon: 'error',
-                                //                 title: res.msg
-                                //             })
-                                //         }
-                                //     }
-                                // });
+                                
                                 
                             } else if (e.target.classList.contains('delete-item-btn') || e.target.parentElement.classList.contains('delete-item-btn')) {
                                 let self = e.target.tagName === "I" ? e.target.parentElement : e.target;
                                 let nodelist = self.parentElement.parentElement.parentElement.children;
 
-                                    let msg = $('textarea').text();
-                                    $.ajax({
-                                        type: "post",
-                                        url: "",
-                                        data: {
-                                            cid: nodelist[0].textContent,
-                                            msg,
-                                            email: nodelist[2].textContent
-                                        },
-                                        dataType: "json",
-                                        success: function (res) {
-                                            if(res.code == 202){
-                                                const Toast = Swal.mixin({
-                                                    toast: true,
-                                                    position: 'top-end',
-                                                    showConfirmButton: false,
-                                                    timer: 2000,
-                                                    timerProgressBar: true,
-                                                    didOpen: (toast) => {
-                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                                    }
-                                                })
-
-                                                Toast.fire({
-                                                    icon: 'success',
-                                                    title: res.msg
-                                                }).then(() => {
-                                                    location.reload()
-                                                })
-                                            }else{
-                                                const Toast = Swal.mixin({
-                                                    toast: true,
-                                                    position: 'top-end',
-                                                    showConfirmButton: false,
-                                                    timer: 2000,
-                                                    timerProgressBar: true,
-                                                    didOpen: (toast) => {
-                                                        toast.addEventListener('mouseenter', Swal.stopTimer)
-                                                        toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                                    }
-                                                })
-
-                                                Toast.fire({
-                                                    icon: 'error',
-                                                    title: 'Error Hiring!'
-                                                })
-                                            }
-                                        }
-                                    });
+                                    
                             }
                         });
 

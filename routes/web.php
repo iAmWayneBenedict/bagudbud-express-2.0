@@ -111,5 +111,7 @@ Route::controller(TrackingController::class)->group(function() {
 Route::controller(AdminController::class)->group(function() {
     Route::get('/admin/login', 'index');
     Route::get('/admin', 'dashboardAdmin');
-    Route::get('/applications', 'application');
+    Route::get('/applications', 'application')->name('applications');
+    Route::post('/applications/verify', 'updateVerified');
+    Route::post('/login', 'login');
 });

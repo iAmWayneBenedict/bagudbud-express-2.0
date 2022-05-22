@@ -22,8 +22,11 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body d-flex flex-column">
-                                        <span class="err-handler d-none alert alert-danger text-center"></span>
-                                        <form method="POST" id="admin-form">
+                                        @if (isset($error))
+                                            <span class="err-handler alert alert-danger text-center">{{ $error }}</span>
+                                        @endif
+                                        <form method="POST" action="/login" id="admin-form">
+                                            @csrf
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="username" required type="text" name="username" placeholder="abc223" />
                                                 <label for="username">Username</label>
@@ -56,7 +59,6 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
-
         <script>
             $(() => {
                 $('#flexCheckChecked').change(function() {
@@ -66,7 +68,6 @@
                         $('input[name=password]').attr('type', 'password')
                     }
                 })
-
                 // $('#admin-form').submit(function(event) {
                 //     event.preventDefault();
                 //     // prevent from entering
