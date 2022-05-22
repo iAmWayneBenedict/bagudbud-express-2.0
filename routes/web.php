@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ForgotPassController;
@@ -103,4 +104,11 @@ Route::controller(ForgotPassController::class)->group(function () {
 // Tracking Controller --- Control Routes
 Route::controller(TrackingController::class)->group(function() {
     Route::get('/tracking', 'index')->name('tracking');
+});
+
+// Admin Controller --- Control Routes
+Route::controller(AdminController::class)->group(function() {
+    Route::get('/admin/login', 'index');
+    Route::get('/admin', 'dashboardAdmin');
+    Route::get('/applications', 'application');
 });
