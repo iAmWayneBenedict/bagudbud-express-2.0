@@ -22,7 +22,7 @@ class ClientController extends Controller
 
         /**
             *validate inputs from the user
-            @ContactNumber -> validate contact number
+            @Rules\ContactNumber -> validate contact number
         */
 
         $validator = Validator::make($request->all(), [
@@ -85,7 +85,7 @@ class ClientController extends Controller
             Mail::to($email)->send(new RegisterSendEmail($data));
             return response()->json([ 
                 'code' => 200,
-                'last_id' => $last_id,
+                // 'last_id' => $last_id,
                 'msg' => "You have successfully signed up!"
             ]);
         }     
@@ -105,7 +105,6 @@ class ClientController extends Controller
        else{
            return redirect('client-login')->with('fail', 'Account Cannot Verified');
        }
-    // echo 'goods';
     }
 
     public function clientLogin() {
@@ -114,7 +113,9 @@ class ClientController extends Controller
 
     public function login_Auth(Request $request){
         
-        //validate all client/user inputs
+        /**
+         * this function is to validate the the login inputs of the user
+         */
         $request->validate([
             'email' => ['required', 'email'],
             'password' => 'required'
@@ -136,7 +137,6 @@ class ClientController extends Controller
             default:
                 $request->session()->put('user_id', $login_response);
                 return redirect('client-dashboard');
-                // return back()->with('success', $login_response);
         }   
     }
 
