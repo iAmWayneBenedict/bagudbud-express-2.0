@@ -9,7 +9,7 @@
             <div class="col container-fluid d-flex justify-content-center align-items-center">
                 <div class="row h-100" style="width: 30rem;">
                     <div class="col form-container d-flex flex-column justify-content-center align-items-center my-3">
-                        <a href="{{url('/')}}" class="justify-content-center"><img src="{{ asset('img/logo.png') }}" class="logo-form img-fluid w-75 mb-4 mb-xxl-5 px-5 pb-3"
+                        <a href="{{url('/')}}" class="d-flex justify-content-center"><img src="{{ asset('img/logo.png') }}" class="logo-form img-fluid w-75 mb-4 mb-xxl-5 px-5 pb-3"
                             alt="logo"></a>
                         <form action="{{ url('login_Auth') }}" method="POST" class="container d-flex flex-column"
                             id="log_form">
