@@ -71,22 +71,23 @@ Route::controller(ClientDashboardController::class)->middleware('AuthCheck')->gr
 // Rider Controller --- Control Routes
 Route::controller(RiderController::class)->group(function() {
     // Route::get("/users", "viewLoad");
-    Route::get("/rider-signup", "riderSignup");
+    Route::get("/rider-signup", "riderSignup")->middleware('R_AlreadyLogin');
     Route::post("/rider_store", "store")->name("rider_store");
-    Route::get("/rider-login", "riderLogin");
+    Route::get("/rider-login", "riderLogin")->middleware('R_AlreadyLogin');
     Route::post("/rider-login_Auth", "rider_login_Auth")->name("rider-login_Auth");
 });
 
 // Rider Profile Controller
-Route::controller(RiderProfileController::class)->group(function() {
+Route::controller(RiderProfileController::class)->middleware('R_AuthCheck')->group(function() {
     Route::get('/rider-dashboard/profile', 'index');
     Route::post('/rider-dashboard/profile', 'updateRiderProfile');
-    Route::get('/rider-dashboard/delete-account', 'deleteAccount')->name('deleteAccount');
+    Route::get('/rider_delete', 'rider_delete_account')->name('rider_delete');
     Route::get('/rider-dashboard/profile-and-password', 'passwordAndSecurity');
+    Route::get('/r_logout', 'r_logout');
 });
 
 // Rider Dashboard Controller
-Route::controller(RiderDashboardController::class)->group(function() {
+Route::controller(RiderDashboardController::class)->middleware('R_AuthCheck')->group(function() {
     Route::get('/rider-dashboard', 'index');
     Route::get('/rider-accepted', 'accepted');
     Route::get('/rider-request/{id}', 'requestDetails')->where('id', '[0-9]+');

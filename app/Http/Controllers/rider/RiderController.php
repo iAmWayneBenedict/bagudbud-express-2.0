@@ -23,8 +23,8 @@ class RiderController extends Controller
             'password' => 'required'
         ]);
 
-        $client_model = new RiderModel();
-        $login_response = $client_model->login_process($request->email, $request->password);
+        $rider_model = new RiderModel();
+        $login_response = $rider_model->login_process($request->email, $request->password);
 
         switch ($login_response) {
             case "E1":
@@ -110,7 +110,8 @@ class RiderController extends Controller
             ];
             // Mail::to($email)->send(new RegisterSendEmail($mail_data));
             return response()->json([
-                'code' => 200
+                'code' => 200,
+                'msg' => 'Check Your email for other needed requirements'
             ]);
         }
 

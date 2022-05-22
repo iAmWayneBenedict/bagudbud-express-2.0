@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\rider;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Rider\RiderModel;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class RiderProfileController extends Controller
 {
@@ -18,11 +19,6 @@ class RiderProfileController extends Controller
 
     public function passwordAndSecurity() {
         return view('rider.rider-password-and-security');
-    }
-
-    public function deleteAccount() {
-        
-        return view('rider.delete-account');
     }
 
     //retrieve data from database
@@ -43,5 +39,32 @@ class RiderProfileController extends Controller
             $c_data->profile_pic = 1;
         }
         return view('rider.rider-profile', ['c_data' => $c_data]);
+    }
+
+     // rider delete account
+     public function rider_delete_account(Request $request){
+        $user_id = session('user_rider_id');
+        $is_delete = RiderModel::where('rider_id', $user_id)->delete();
+
+        if($is_delete == 1){
+            $request->session()->forget('user_rider_id');
+            return response()->json([
+                'code' => 200 
+            ]);
+        }
+        else{
+            return response()->json([
+                'code' => 404 
+            ]);
+        }
+        
+    }
+
+    //logout function
+    public function r_logout(Request $request){
+        if(Session::has('user_rider_id')){
+            $request->session()->forget('user_rider_id');
+            return redirect('/rider-login');
+        }
     }
 }
