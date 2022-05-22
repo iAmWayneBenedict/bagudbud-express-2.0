@@ -303,8 +303,6 @@
 
             $('#form').submit(function(e) {
                 e.preventDefault();
-
-                // alert('Good');
                 const fdata = new FormData(this);
                 //remove error messages
                 $('.text-danger').addClass('d-none');
@@ -318,10 +316,18 @@
                     dataType: "json",
                     success: function(res) {
                         if (res.code == 200) {
-                            alert(res.msg);
-                            $('#form').trigger('reset')
-                            location.href = "/client-login"
-                            //it should clear the form inputs and alert a message
+                            Swal.fire({
+                                title: res.msg,
+                                showClass: {
+                                    popup: 'animate__animated animate__fadeInDown'
+                                },
+                                hideClass: {
+                                    popup: 'animate__animated animate__fadeOutUp'
+                                }
+                            }).then( function() {
+                                $('#form').trigger('reset')
+                                location.href = "/client-login"
+                            });
                         }
                         if (res.code == 404) {
                             $.each(res.errors, function(key, val) {
@@ -330,7 +336,11 @@
                         }
                     },
                     error: function(err) {
-                        alert(err.responseText)
+                        Swal.fire(
+                            'Server Error',
+                            'If you read this message please contact the administrator or the owner of this page',
+                            'error'
+                        )
                     }
                 });
             });
