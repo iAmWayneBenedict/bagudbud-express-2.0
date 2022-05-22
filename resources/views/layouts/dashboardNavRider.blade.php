@@ -73,10 +73,10 @@
                                         Security</a>
                                 </li>
                                 <li class="submenu-item delete-account">
-                                    <a href="/rider-dashboard/delete-account" id="delete-acc">Delete Account</a>
+                                    <a id="delete-acc" style="cursor: pointer">Delete Account</a>
                                 </li>
                                 <li class="submenu-item">
-                                    <a href="" class="text-danger">Logout</a>
+                                    <a href="/r_logout" class="text-danger">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -222,34 +222,21 @@
                     confirmButtonText: 'Continue!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-
                         $.ajax({
                             type: "get",
-                            url: "{{ route('deleteAccount') }}",
+                            url: '{{ route('rider_delete')}}',
                             data: '',
                             dataType: "json",
                             success: function(res) {
-                                if (res.code == 202) {
+                                console.log(res)
+                                if (res.code == 200) {
                                     Swal.fire(
                                         'Deleted!',
                                         'Your account has been deleted.',
                                         'success'
                                     ).then(function() {
-                                        location.href =
-                                            "/rider-login";
+                                        location.href = '{{ url('rider-login') }}';
                                     })
-                                } else if (res.code == 404) {
-                                    Swal.fire(
-                                        'Oops!',
-                                        res.msg,
-                                        'warning'
-                                    )
-                                } else if (res.code == 204) {
-                                    Swal.fire(
-                                        'Oops!',
-                                        res.msg,
-                                        'warning'
-                                    )
                                 }
                             }
                         });

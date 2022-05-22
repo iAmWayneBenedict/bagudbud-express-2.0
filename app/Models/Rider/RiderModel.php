@@ -84,4 +84,5 @@ class RiderModel extends Model
         // return the affected rows
         return $affected;
     }
+
 }

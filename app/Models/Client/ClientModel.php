@@ -86,7 +86,7 @@ class ClientModel extends Model
     public function verify_account($vkey){
 
         //return values
-        $cannot_veifiry_account = 0;
+        $cannot_verify_account = 0;
         $verified = 1;
 
         $verify = DB::table('clients')
@@ -100,7 +100,7 @@ class ClientModel extends Model
             return $verified;
         }
         else{
-            return $cannot_veifiry_account;
+            return $cannot_verify_account;
         }      
     }
 
@@ -121,9 +121,6 @@ class ClientModel extends Model
         return $affected;
     }
     
-    public function update_user_data($id){
-
-    }
 
     //dashboard (user name, bussines name, profile_pic)
     public static function get_data_for_dashboard($id){

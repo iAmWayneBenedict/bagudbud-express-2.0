@@ -65,6 +65,9 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         //client authentication/middleware
         'AuthCheck' => \App\Http\Middleware\Client\AuthCheck::class,
-        'AlreadyLogin' => \App\Http\Middleware\Client\AlreadyLogin::class
+        'AlreadyLogin' => \App\Http\Middleware\Client\AlreadyLogin::class,
+        //rider authentication - middleware
+        'R_AlreadyLogin' => \App\Http\Middleware\Rider\R_AlreadyLogin::class,
+        'R_AuthCheck' => \App\Http\Middleware\Rider\R_AuthCheck::class
     ];
 }

@@ -363,9 +363,18 @@
                 dataType: "json",
                 success: function(res) {
                     if (res.code == 200) {
-                        alert('ok');
-                        //it should be clear the form inputs and alert a message
-                        //that rider should see thier email for additional requierements
+                        Swal.fire({
+                            title: res.msg,
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        }).then( function() {
+                            $('#form').trigger('reset')
+                            location.href = "/rider-login"
+                        });
                     }
                     if (res.code == 404) {
                         $.each(res.errors, function(key, val) {
