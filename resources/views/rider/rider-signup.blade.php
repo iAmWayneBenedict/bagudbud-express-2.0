@@ -363,7 +363,9 @@
                 dataType: "json",
                 success: function(res) {
                     if (res.code == 200) {
-                        alert('ok');
+                        alert('You have successfully signed up!');
+                        $('#form').trigger('reset')
+                        location.href = "/rider-login"
                         //it should be clear the form inputs and alert a message
                         //that rider should see thier email for additional requierements
                     }
