@@ -133,7 +133,7 @@ class ForgotPassController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => "required|email|exists:riders,email",
             'password' => "required|min:8|max:25",
-            'reset_code' => "required|numeric"
+            'code' => "required|numeric"
         ]);
  
         if($validator->fails()){
