@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\AdminModel;
 use App\Http\Controllers\Controller;
-use App\Mail\ApplicationVerfication;
+use App\Mail\ApplicationVerification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
@@ -47,7 +47,7 @@ class AdminController extends Controller
         $affected = AdminModel::updateVerified($id['id']);
         if ($affected) {
             //email here
-            // Mail::to($email)->send(new ApplicationVerfication());
+            Mail::to($email)->send(new ApplicationVerification());
             return redirect()->route('applications', ['success' => 200]);
         } else {
             return redirect()->route('applications', ['fail' => 400]);

@@ -114,7 +114,7 @@ class ForgotPassController extends Controller
         if(ForgotPassModel::rider_update_reset_code($request->email, $FiveDigitRandomNumber)){
             $data = ['code' => $FiveDigitRandomNumber];
 
-            Mail::to($request->email)->send(new RegisterSendEmail($data));
+            Mail::to($request->email)->send(new SendOTP($data));
             return response()->json([
                 'code' => 202,
             ]);
@@ -146,7 +146,7 @@ class ForgotPassController extends Controller
 
          $password = Hash::make($request->password);
 
-         $res = ForgotPassModel::rider_update_password($request->email, $request->reset_code, $password);
+         $res = ForgotPassModel::rider_update_password($request->email, $request->code, $password);
          return response()->json([
             'code' => 202
          ]);
