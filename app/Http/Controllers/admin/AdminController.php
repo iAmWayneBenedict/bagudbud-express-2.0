@@ -37,6 +37,7 @@ class AdminController extends Controller
     }
 
     public function getApplicants() {
+        //get the data of apllicants
         $data = AdminModel::getApplications()->all();
         return $data;
     }

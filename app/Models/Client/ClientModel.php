@@ -27,8 +27,9 @@ class ClientModel extends Model
 
     public function check_verification($email){
         /*
-            check in the enail in database if already used
             param: $value : input email
+            function: check in the email is verified
+            return: boolean
         */
         $client_account = DB::table('clients')
             ->where('email', $email)
@@ -54,7 +55,9 @@ class ClientModel extends Model
         /* 
             param: email: client email for the account
             param: password: clear text password
+            function: validate the user inputs before login
         */
+
         // return values
         $not_verified = "E1";
         $email_not_found = "E2";
@@ -84,7 +87,10 @@ class ClientModel extends Model
 
     //accout verification
     public function verify_account($vkey){
-
+        /**
+         * param: $vkey -> the code that sent email of the user
+         * funtion: verified the user account
+         */
         //return values
         $cannot_verify_account = 0;
         $verified = 1;

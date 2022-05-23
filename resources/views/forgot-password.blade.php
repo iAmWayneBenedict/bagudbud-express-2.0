@@ -83,38 +83,7 @@
                 }
             });
 
-            // $('#email').change(function() {
-            //     if (!$(this).val()) { // if email is empty, keep the following input field disabled
-            //         $('#get-code').css('display', 'flex')
-            //         $('#password, #code, #confirm').attr("disabled", true);
-            //         return;
-            //     }
-
-            //     // else, remove send code button and disabled property
-            //     $('#get-code').css('display', 'none')
-            //     $('#password, #code, #confirm').removeAttr("disabled");
-            // })
-
-            // let temp = "";
-            // $('#code').keyup(function(event) {
-
-            //     // if the input field is empty, then reset temp variable and immediately exit the function
-            //     if (!$(this).val()) {
-            //         temp = '';
-            //         return;
-            //     }
-
-            //     // if the clicked key is not a number, then remove the latest character added
-            //     let rawData = $(this).val();
-            //     if (isNaN(parseInt(event.key))) {
-            //         $(this).val(rawData.slice(0, this.value.length - 1));
-            //         return;
-            //     }
-
-            //     // store to the temp variable the last char added
-            //     temp += $(this).val().charAt(this.value.length - 1);
-            //     $(this).val(temp);
-            // })
+            
         })
 
         $(document).ready(function() {

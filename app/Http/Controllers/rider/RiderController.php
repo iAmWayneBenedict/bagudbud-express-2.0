@@ -102,6 +102,7 @@ class RiderController extends Controller
         $store = RiderModel::create($input_data);
         if($store){
 
+            //store data to applicants database
             $application_id = RiderModel::apply(['rider_id' => $store->id]);
 
             $mail_data = [

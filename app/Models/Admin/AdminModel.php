@@ -17,6 +17,11 @@ class AdminModel extends Model
     ];
 
     public static function login($username, $password) {
+        /**
+         * param: $username
+         * param: $password
+         * return: boolean
+         */
         $data = DB::table('admin')->where(['username' => $username, 'password' => $password])->exists();
         if ($data) {
             return true;
@@ -26,6 +31,10 @@ class AdminModel extends Model
     }
 
     public static function getApplications() {
+         /**
+         * function -> update the status of applicants and delete from the list
+         * return: array of applcant/user data
+         */
         $users = DB::table('riders')
             ->leftJoin('applicants', 'riders.rider_id', '=', 'applicants.rider_id')
             ->where('riders.verified', 0)
@@ -35,6 +44,11 @@ class AdminModel extends Model
     }
 
     public static function updateVerified($id) {
+        /**
+         * param: $id -> the id of the user retrieve from session
+         * function -> update the status of applicants and delete from the list
+         * return: true or false
+         */
         $affected1 = DB::table('riders')->where('rider_id', $id)->update(['verified' => 1]);
         
         if($affected1){
@@ -46,6 +60,11 @@ class AdminModel extends Model
     
     //get only email
     public static function get_applicant_email($id){
+         /**
+         * param: $id -> the id of the user retrieve from session
+         * function -> get the applicants/user email 
+         * return: email
+         */
         $email = DB::table('riders')
             ->where('rider_id', $id)
             ->pluck('email');

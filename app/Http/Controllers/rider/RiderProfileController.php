@@ -29,6 +29,7 @@ class RiderProfileController extends Controller
         return $user_data;    
     }
 
+    //update profile
     public function updateRiderProfile(Request $request) {
         $user_id = session('user_rider_id');
         $data = $request->all();
