@@ -47,13 +47,14 @@ class AdminController extends Controller
         $affected = AdminModel::updateVerified($id['id']);
         if ($affected) {
             //email here
-            Mail::to($email)->send(new ApplicationVerfication());
+            // Mail::to($email)->send(new ApplicationVerfication());
             return redirect()->route('applications', ['success' => 200]);
         } else {
             return redirect()->route('applications', ['fail' => 400]);
         }
         
     }
+
     //logout function
     public function admin_logout(Request $request){
         if(Session::has('admin')){

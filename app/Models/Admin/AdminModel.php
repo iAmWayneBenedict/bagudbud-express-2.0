@@ -35,9 +35,13 @@ class AdminModel extends Model
     }
 
     public static function updateVerified($id) {
-        $affected = DB::table('riders')->where('rider_id', $id)->update(['verified' => 1]);
-
-        return $affected;
+        $affected1 = DB::table('riders')->where('rider_id', $id)->update(['verified' => 1]);
+        
+        if($affected1){
+            $affected = DB::table('applicants')->where('rider_id', $id)->delete();
+            return $affected;
+        }
+        
     }
     
     //get only email
