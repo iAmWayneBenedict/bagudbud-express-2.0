@@ -176,7 +176,7 @@
                 if (user == 'rider-login') {
                     var url = "{{ route('rider_RC') }}";
                 }
-
+                
                 $.ajax({
                     type: "POST",
                     url: url,
