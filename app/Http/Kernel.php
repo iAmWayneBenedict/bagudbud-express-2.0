@@ -68,6 +68,9 @@ class Kernel extends HttpKernel
         'AlreadyLogin' => \App\Http\Middleware\Client\AlreadyLogin::class,
         //rider authentication - middleware
         'R_AlreadyLogin' => \App\Http\Middleware\Rider\R_AlreadyLogin::class,
-        'R_AuthCheck' => \App\Http\Middleware\Rider\R_AuthCheck::class
+        'R_AuthCheck' => \App\Http\Middleware\Rider\R_AuthCheck::class,
+        //admin authentication - middleware
+        'A_AlreadyLogin' => \App\Http\Middleware\Admin\A_AlreadyLogin::class,
+        'A_AuthCheck' => \App\Http\Middleware\Admin\A_AuthCheck::class
     ];
 }

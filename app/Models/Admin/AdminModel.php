@@ -17,8 +17,8 @@ class AdminModel extends Model
     ];
 
     public static function login($username, $password) {
-        $data = DB::table('admin')->where(['username' => $username, 'password' => $password])->select('id')->first();
-        if ($data->id >= 1) {
+        $data = DB::table('admin')->where(['username' => $username, 'password' => $password])->exists();
+        if ($data) {
             return true;
         }
     
@@ -28,6 +28,7 @@ class AdminModel extends Model
     public static function getApplications() {
         $users = DB::table('riders')
             ->leftJoin('applicants', 'riders.rider_id', '=', 'applicants.rider_id')
+            ->where('riders.verified', 0)
             ->get();
 
         return $users;
@@ -39,4 +40,12 @@ class AdminModel extends Model
         return $affected;
     }
     
+    //get only email
+    public static function get_applicant_email($id){
+        $email = DB::table('riders')
+            ->where('rider_id', $id)
+            ->pluck('email');
+
+        return $email[0]; // pluck value is in array form where the value we need is in index 0 only
+    }
 }

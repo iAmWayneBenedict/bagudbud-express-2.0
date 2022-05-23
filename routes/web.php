@@ -109,9 +109,10 @@ Route::controller(TrackingController::class)->group(function() {
 
 // Admin Controller --- Control Routes
 Route::controller(AdminController::class)->group(function() {
-    Route::get('/admin/login', 'index');
-    Route::get('/admin', 'dashboardAdmin');
-    Route::get('/applications', 'application')->name('applications');
-    Route::post('/applications/verify', 'updateVerified');
+    Route::get('/admin/login', 'index')->middleware('A_AlreadyLogin');
+    Route::get('/admin', 'dashboardAdmin')->middleware('A_AuthCheck');
+    Route::get('/applications', 'application')->name('applications')->middleware('A_AuthCheck');
+    Route::post('/applications/verify', 'updateVerified')->middleware('A_AuthCheck');
     Route::post('/login', 'login');
+    Route::get('/admin-logout', 'admin_logout');
 });
